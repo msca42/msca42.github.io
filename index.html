@@ -329,6 +329,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/05/09/算法与数据结构/BubbleSort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="msca">
+      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="msca.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/09/算法与数据结构/BubbleSort/" class="post-title-link" itemprop="url">Bubble  Sort</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-09 01:06:10 / 修改时间：23:53:04" itemprop="dateCreated datePublished" datetime="2019-05-09T01:06:10+08:00">2019-05-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm-and-Date-Structure/" itemprop="url" rel="index"><span itemprop="name">Algorithm and  Date Structure</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Bubble Sort  is the sort which need compare with each other from the first number . By this way ,the max will turn to the last location in Array or other container .</p>
+<p>I will show the code and explain it.</p>
+<p>In the beginning , we have many numbers . while we sort one time,the number have decreased one time . In the last we will have  the only one .every sort we will reduce the max . </p>
+<p>In following code , firstly ,I  generated  randomly one hundred numbers in an array.  Then I cycle it in index to get  specific number .  at the same time .I should reduce the max every cycle . </p>
+<p>tip:  In the cycle , sometimes .there can be none should turn location to the other . That means the cycle may be finished.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class BubbleSort &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int[] sortArray = RandomArray();</span><br><span class="line">		Bubble(sortArray, sortArray.length);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private static int[] RandomArray() &#123;</span><br><span class="line">	int[] array = new int[100];</span><br><span class="line">	Random r = new Random();</span><br><span class="line">	for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">		array[i] = r.nextInt(1000);</span><br><span class="line">	&#125;</span><br><span class="line">	return array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private static void Bubble(int array[], int n) &#123;</span><br><span class="line">	if (n &lt;= 1) return;</span><br><span class="line">	for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">			boolean flag = false;</span><br><span class="line">		for (int j = 0; j &lt; n - 1 - i; j++) &#123;</span><br><span class="line">			if (array[j] &gt; array[j + 1]) &#123;</span><br><span class="line">				int tmp = array[j];</span><br><span class="line">				array[j] = array[j+1];</span><br><span class="line">				array[j+1] = tmp;</span><br><span class="line">				flag=true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">			if(!flag)break;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	for (int i = 0; i &lt; array.length; i++) &#123;</span><br><span class="line">		System.out.println(array[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+	<div>
+	
+	</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/05/05/算法与数据结构/一道题的当前思路分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -440,6 +607,172 @@
 <p>​    This problem  has a necessary point . The appearance of the numbers , therefore ,the temp or the value  may be it.</p>
 <p>​    </p>
 <p>​    </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+	<div>
+	
+	</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/04/30/炉边夜话/day07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="msca">
+      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="msca.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/30/炉边夜话/day07/" class="post-title-link" itemprop="url">day07</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-30 00:06:02 / 修改时间：00:26:47" itemprop="dateCreated datePublished" datetime="2019-04-30T00:06:02+08:00">2019-04-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Fireside-talk/" itemprop="url" rel="index"><span itemprop="name">Fireside talk</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="seventh-day"><a href="#seventh-day" class="headerlink" title="seventh day"></a>seventh day</h5><p>​    I  have a long time without planning in time .  Just like now ,  looking the computer screen , a little </p>
+<p>sluggish .  tomorrow seems to my birthday , but I have no powerful desire .  people always  treat  a</p>
+<p>day as a importance  point . however , like usual  day ,there will happen nothing which can change </p>
+<p>you  . I  consider me as a person who often brag  occasionally .  </p>
 
           
         
@@ -617,172 +950,6 @@
             <p>According to  lunar  calendar ,  Today is my birthday .  And the life enrich me in my study. However , I  still worry about that  I  should read before .  It ‘s not  the main reason , the main reason may be the decreasing time or  the memory which between  remember and forgetting . </p>
 <p>Now, we talk about some book I recently read.  A few time ago , I buy the book called 《The Penguin History of Europe》. The third volume draws a picture from 15th to 17th century. </p>
 <p>After religious reform in  Europe…</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-	<div>
-	
-	</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/04/30/炉边夜话/day07/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="msca">
-      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="msca.blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/30/炉边夜话/day07/" class="post-title-link" itemprop="url">day07</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-30 00:06:02 / 修改时间：00:26:47" itemprop="dateCreated datePublished" datetime="2019-04-30T00:06:02+08:00">2019-04-30</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Fireside-talk/" itemprop="url" rel="index"><span itemprop="name">Fireside talk</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="seventh-day"><a href="#seventh-day" class="headerlink" title="seventh day"></a>seventh day</h5><p>​    I  have a long time without planning in time .  Just like now ,  looking the computer screen , a little </p>
-<p>sluggish .  tomorrow seems to my birthday , but I have no powerful desire .  people always  treat  a</p>
-<p>day as a importance  point . however , like usual  day ,there will happen nothing which can change </p>
-<p>you  . I  consider me as a person who often brag  occasionally .  </p>
 
           
         
@@ -1882,194 +2049,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/04/13/深入理解计算机系统/提要/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="msca">
-      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="msca.blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/13/深入理解计算机系统/提要/" class="post-title-link" itemprop="url">提要</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-13 19:07:10" itemprop="dateCreated datePublished" datetime="2019-04-13T19:07:10+08:00">2019-04-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-14 00:20:19" itemprop="dateModified" datetime="2019-04-14T00:20:19+08:00">2019-04-14</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深入理解计算机系统/" itemprop="url" rel="index"><span itemprop="name">深入理解计算机系统</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p><strong>为什么</strong>？</p>
-<p>​      刘大的码农有道上看到之前死磕的CSAPP总结，自己也想对计算机底层的东西做一些了解。于是</p>
-</li>
-</ol>
-<p>乎想做这个系列的读书笔记，也借此锻炼自己的写作能力。</p>
-<ol start="2">
-<li>怎么写？ <ol>
-<li>讲了什么东西？</li>
-<li>针对内容，有哪些疑问？</li>
-<li>一些引申</li>
-</ol>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-	<div>
-	
-	</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2118,7 +2097,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
