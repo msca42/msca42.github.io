@@ -349,7 +349,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/21/JVM/JVM知识总结/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/08/21/JVM/JVM知识总结/" class="post-title-link" itemprop="url">JVM知识总结</a>
               
             
           </h1>
@@ -374,16 +374,46 @@
                 
               
 
-              <time title="创建时间：2019-08-21 11:38:30 / 修改时间：19:26:24" itemprop="dateCreated datePublished" datetime="2019-08-21T11:38:30+08:00">2019-08-21</time>
+              <time title="创建时间：2019-08-21 11:32:10" itemprop="dateCreated datePublished" datetime="2019-08-21T11:32:10+08:00">2019-08-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-30 23:03:45" itemprop="dateModified" datetime="2019-08-30T23:03:45+08:00">2019-08-30</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -415,13 +445,7 @@
       
         
           
-            <ul>
-<li><p>title:    JVM知识总结</p>
-<p>date: 2019-08-21  11:32:10</p>
-<p>tags:</p>
-<p>categories:   JVM</p>
-<hr>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文主要参考周志明的第二版《深入理解Java虚拟机》，芋道源码精尽java【虚拟机】,陈树义《Java基础系列》，对JVM知识进行一次有体系的复习。</p>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文主要参考周志明的第二版《深入理解Java虚拟机》，芋道源码精尽java【虚拟机】,陈树义《Java基础系列》，对JVM知识进行一次有体系的复习。</p>
 <h3 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h3><p><img src="/images/JVMpandect.png" alt="JVMpandect"></p>
 <h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="JVM是什么？"><a href="#JVM是什么？" class="headerlink" title="JVM是什么？"></a>JVM是什么？</h4><ul>
 <li>Java Virtual Machine，java虚拟机，主要任务是编译字节码文件，生成机器码。</li>
@@ -439,8 +463,8 @@
 <li>JIT编译器：HotSpot VM的C1，C2编译器。</li>
 <li>AOT编译器：jaotc。</li>
 </ul>
-<h5 id="javac的编译过程"><a href="#javac的编译过程" class="headerlink" title="javac的编译过程"></a>javac的编译过程</h5><pre><code>![javac](/images/javac.jpg)
-</code></pre><ul>
+<h5 id="javac的编译过程"><a href="#javac的编译过程" class="headerlink" title="javac的编译过程"></a>javac的编译过程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![javac](/images/javac.jpg)</span><br></pre></td></tr></table></figure>
+<ul>
 <li>解析和填充符号表过程<ul>
 <li>词法分析（parseFile）<ul>
 <li>将源代码的字符流转变为<strong>标记</strong>（Token）集合;</li>
@@ -507,9 +531,7 @@
 <li>TODO 泛型，自动装箱，自动拆箱，循环遍历，边长参数，条件编译，内部类，枚举类，断言语句，对枚举和字符串（JDK1.7支持）的switch支持，try语句中定于和关闭资源（jdk1.7支持） ，方式：追踪源码，反编译</li>
 </ul>
 <p>TODO checkstyle 小功能实现</p>
-</li>
-</ul>
-<h5 id="运行期优化"><a href="#运行期优化" class="headerlink" title="运行期优化"></a>运行期优化</h5><p>  <strong>解释器和编译器</strong></p>
+<h5 id="运行期优化"><a href="#运行期优化" class="headerlink" title="运行期优化"></a>运行期优化</h5><p><strong>解释器和编译器</strong></p>
 <ul>
 <li>HotSpot同时包含解释器（interpreter）和编译器(c1,c2)<br>采用混合模式解释器+一个编译器</li>
 <li>解释器<ul>
@@ -518,14 +540,15 @@
 <li>作为逃生门，逆优化，提高效率</li>
 </ul>
 </li>
-<li><p>编译器（即时编译）</p>
-<ul>
+<li>编译器（即时编译）<ul>
 <li>将代码编译成本地代码，提高执行效率</li>
 <li>C1:Client Compiler</li>
 <li>C2:Server Compiler</li>
 </ul>
-<p><strong>分层策略</strong></p>
 </li>
+</ul>
+<p><strong>分层策略</strong></p>
+<ul>
 <li>第0层:程序解释执行，解释器不开启性能监控（Profiling）,可触发第一层编译</li>
 <li>第1层：C1编译，将字节码编译为本地代码，进行简单，可靠的优化，如有必要将加入新跟那个监控的逻辑</li>
 <li>第2层(及以上)：C2编译，将字节码编译为本地代码，但是会启用一些编译耗时较长的优化，甚至会根据性能监控信息进行一些不可靠的激进优化</li>
@@ -536,7 +559,7 @@
 </ul>
 </li>
 </ul>
-<p>  <strong>热点代码</strong></p>
+<p><strong>热点代码</strong></p>
 <ul>
 <li>热点探测（Hot Spot Detection）<ul>
 <li>基于采样的热点探测<ul>
@@ -555,16 +578,16 @@
 <li>以整个方法作为编译对象，标准的JIT编译方式</li>
 </ul>
 </li>
-<li><p>被多次执行的循环体</p>
-<ul>
+<li>被多次执行的循环体<ul>
 <li>以整个方法为编译对象，栈上替换(OSR编译)</li>
 </ul>
-<p>HotSpot为每个方法提供了两个计数器：</p>
 </li>
+</ul>
+<p>HotSpot为每个方法提供了两个计数器：</p>
+<ul>
 <li>方法调用计数器（Invocation Counter）</li>
 <li>回边(Back Edge Counter)</li>
-<li><p>超过阈值，触发JIT</p>
-<ul>
+<li>超过阈值，触发JIT<ul>
 <li>方法调用计数器 Client:1500  Server:10000</li>
 <li>一个方法被调用<ul>
 <li>该方法是否存在被JIT编译过的版本</li>
@@ -581,9 +604,9 @@
 </ul>
 </li>
 </ul>
-<h4 id="类文件结构"><a href="#类文件结构" class="headerlink" title="类文件结构"></a>类文件结构</h4><h4 id="内存区域"><a href="#内存区域" class="headerlink" title="内存区域"></a>内存区域</h4><h4 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h4><h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4></li>
+</li>
 </ul>
-<ul>
+<h4 id="类文件结构"><a href="#类文件结构" class="headerlink" title="类文件结构"></a>类文件结构</h4><h4 id="内存区域"><a href="#内存区域" class="headerlink" title="内存区域"></a>内存区域</h4><h4 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h4><h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><ul>
 <li>芋道源码精尽系列</li>
 <li><a href="https://book.douban.com/subject/24722612/" target="_blank" rel="noopener">《深入理解Java虚拟机：JVM高级特性与最佳实践》（第二版）周志明</a></li>
 <li><a href="https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html" target="_blank" rel="noopener">《JVM基础系列》陈树义</a></li>
@@ -1896,7 +1919,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
