@@ -96,24 +96,24 @@
 
 
 
-  <meta name="description" content="​    background： Now I’m reading a book called 《Algorithm in cartoon》,while editor talk about  Space Complexity , a problem  hit my head. So I want to summarize it. ​    The problem is written that  t">
+  <meta name="description" content="第一阶段： 文件，应用，数据库 LAMP 文件，应用程序和数据库共存于一台服务器中   第二阶段： 文件，应用，数据库 应用服务和数据服务分离 三台服务器：应用服务器，文件服务器和数据库服务器 针对不同需求定制相应的服务器功能 原因 单一服务器不能满足文件容量，抑或是CPU处理的需求     第三阶段： 分布式缓存集群，文件，应用(本地缓存)，数据库 缓存 新增本地缓存和远程分布式缓存集群 原因">
 <meta property="og:type" content="article">
-<meta property="og:title" content="thought  about a problem">
-<meta property="og:url" content="http://http://msca42.site/2019/05/05/算法与数据结构/一道题的当前思路分析/index.html">
+<meta property="og:title" content="大型网站架构演化">
+<meta property="og:url" content="http://http://msca42.site/2019/08/31/架构/大型网站架构演化/index.html">
 <meta property="og:site_name" content="msca.blog">
-<meta property="og:description" content="​    background： Now I’m reading a book called 《Algorithm in cartoon》,while editor talk about  Space Complexity , a problem  hit my head. So I want to summarize it. ​    The problem is written that  t">
+<meta property="og:description" content="第一阶段： 文件，应用，数据库 LAMP 文件，应用程序和数据库共存于一台服务器中   第二阶段： 文件，应用，数据库 应用服务和数据服务分离 三台服务器：应用服务器，文件服务器和数据库服务器 针对不同需求定制相应的服务器功能 原因 单一服务器不能满足文件容量，抑或是CPU处理的需求     第三阶段： 分布式缓存集群，文件，应用(本地缓存)，数据库 缓存 新增本地缓存和远程分布式缓存集群 原因">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-04T17:05:43.717Z">
+<meta property="og:updated_time" content="2019-08-31T02:29:35.696Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="thought  about a problem">
-<meta name="twitter:description" content="​    background： Now I’m reading a book called 《Algorithm in cartoon》,while editor talk about  Space Complexity , a problem  hit my head. So I want to summarize it. ​    The problem is written that  t">
+<meta name="twitter:title" content="大型网站架构演化">
+<meta name="twitter:description" content="第一阶段： 文件，应用，数据库 LAMP 文件，应用程序和数据库共存于一台服务器中   第二阶段： 文件，应用，数据库 应用服务和数据服务分离 三台服务器：应用服务器，文件服务器和数据库服务器 针对不同需求定制相应的服务器功能 原因 单一服务器不能满足文件容量，抑或是CPU处理的需求     第三阶段： 分布式缓存集群，文件，应用(本地缓存)，数据库 缓存 新增本地缓存和远程分布式缓存集群 原因">
 
 
 
 
 
 
-  <link rel="canonical" href="http://http://msca42.site/2019/05/05/算法与数据结构/一道题的当前思路分析/">
+  <link rel="canonical" href="http://http://msca42.site/2019/08/31/架构/大型网站架构演化/">
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>thought  about a problem | msca.blog</title>
+  <title>大型网站架构演化 | msca.blog</title>
   
 
 
@@ -329,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/05/05/算法与数据结构/一道题的当前思路分析/">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/08/31/架构/大型网站架构演化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="msca">
@@ -346,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">thought  about a problem
+          <h1 class="post-title" itemprop="name headline">大型网站架构演化
 
               
             
@@ -372,7 +372,7 @@
                 
               
 
-              <time title="创建时间：2019-05-05 01:06:10 / 修改时间：01:05:43" itemprop="dateCreated datePublished" datetime="2019-05-05T01:06:10+08:00">2019-05-05</time>
+              <time title="创建时间：2019-08-31 10:26:11 / 修改时间：10:29:35" itemprop="dateCreated datePublished" datetime="2019-08-31T10:26:11+08:00">2019-08-31</time>
             
 
             
@@ -394,7 +394,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm-and-Date-Structure/" itemprop="url" rel="index"><span itemprop="name">Algorithm and  Date Structure</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
 
                 
                 
@@ -429,13 +429,109 @@
       
 
       
-        <p>​    background： Now I’m reading a book called 《Algorithm in cartoon》,while editor talk about  Space Complexity , a problem  hit my head. So I want to summarize it.</p>
-<p>​    The problem is written that  there are  many numbers .  Among them ,one is same as the other. We must pick it out.</p>
-<p>​    First ,  I want a container to put these number .  Array is useful in picking and selecting.  So let’s put them in a array for the time being.   Usually , We have two choices  in picking the same.  One  is circulating two arrays. this choice  is same as circulate one array twice. Its  space complexity  is  n^2^ .The other is circulate  one array  with a temp.</p>
-<p>​    For low space complexity ,we must choose behind one. So the problem change  to the temp is what.we may fill something in the blanks to help us picking . Now , I still don’t know the same one .if I fill all  numbers in it , that will turn to be the first choice. Therefore, the temp must be  the number is not the number  the problem provides and must have a connection with these number .  Last of the last ,Key-Value hit me.</p>
-<p>​    This problem  has a necessary point . The appearance of the numbers , therefore ,the temp or the value  may be it.</p>
-<p>​    </p>
-<p>​    </p>
+        <ul>
+<li>第一阶段：<ul>
+<li>文件，应用，数据库</li>
+<li>LAMP</li>
+<li>文件，应用程序和数据库共存于一台服务器中</li>
+</ul>
+</li>
+<li>第二阶段：<ul>
+<li>文件，应用，数据库</li>
+<li>应用服务和数据服务分离</li>
+<li>三台服务器：应用服务器，文件服务器和数据库服务器</li>
+<li>针对不同需求定制相应的服务器功能</li>
+<li>原因<ul>
+<li>单一服务器不能满足文件容量，抑或是CPU处理的需求</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第三阶段：<ul>
+<li>分布式缓存集群，文件，应用(本地缓存)，数据库</li>
+<li>缓存</li>
+<li>新增本地缓存和远程分布式缓存集群</li>
+<li>原因<ul>
+<li>根据八二原则：热点数据只有百分之20，所以将其缓存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第四阶段：<ul>
+<li>负载均衡，应用集群(本地缓存)，文件，分布式缓存集群，数据库</li>
+<li>应用服务器集群(负载均衡器)</li>
+<li>原因<ul>
+<li>单一服务器无法处理过量的请求</li>
+</ul>
+</li>
+<li>负载均衡器可以将用户请求分发到任意服务器上</li>
+</ul>
+</li>
+<li>第五阶段： <ul>
+<li>负载均衡，应用集群(本地缓存，数据访问模块)，分布式缓存集群文件，数据库(主从热备，读写分离) </li>
+<li>数据库（主从热备，读写分离）</li>
+<li>原因：<ul>
+<li>缓存之后，读操作从缓存中读取，除了部分缓存访问不命中，缓存过期；全部写操作</li>
+<li>以上操作，单一数据库不能很好的满足</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第六阶段<ul>
+<li>CDN，反向代理，负载均衡，应用集群(本地缓存，数据访问模块)，分布式缓存集群，文件，数据库(主从热备，读写分离) </li>
+<li>反向代理和CDN<ul>
+<li>CDN:网络提供商的机房</li>
+<li>反向代理：网站的中心机房(最先访问)</li>
+</ul>
+</li>
+<li>原因：<ul>
+<li>优化用户体验，提高网站加载速度；</li>
+<li>尽早的返回数据给用户，加快用户访问速度，减轻后端服务器的负载压力</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第七阶段<ul>
+<li>CDN，反向代理，负载均衡，应用集群(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
+<li>分布式数据库，分布式文件服务器</li>
+<li>关于分布式数据库： <ul>
+<li>分布式数据库只有在单表数据规模非常庞大</li>
+<li>更常用手段是业务发分库，将不同业务的数据库部署在不同的物理服务器。</li>
+</ul>
+</li>
+<li>原因：数据规模扩大</li>
+</ul>
+</li>
+<li>第八阶段<ul>
+<li>CDN，反向代理，负载均衡，应用集群(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
+<li>分布式数据库，分布式文件服务器，搜索引擎，NoSQL</li>
+<li>NoSQL,搜索引擎</li>
+<li>原因：<ul>
+<li>NoSQL,搜索对可伸缩的分布式特性具有更好的支持</li>
+<li>应用服务器用过<strong>统一数据访问模块</strong>访问各种数据，减轻应用程序管理诸多数据源的麻烦</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第九阶段<ul>
+<li>CDN，反向代理，负载均衡，应用集群A,消息队列，应用集群B(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
+<li>应用集群粒度细化，消息队列<ul>
+<li>将网站拆分成许多不用的应用，每个应用独立部署维护</li>
+<li>通过超链接或者通过消息队列进行数据分发</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第10阶段<ul>
+<li>CDN，反向代理，负载均衡，应用集群A,消息队列，应用集群B，分布式服务(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
+<li>分布式服务<ul>
+<li>将可复用的应用提取出来，应用系统只需管理用户界面，通过分布式服务调用公用业务服务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>参考来源：<a href="https://book.douban.com/subject/25723064/" target="_blank" rel="noopener">《大型网站技术架构：核心原理与案例分析》</a></li>
+</ul>
 
       
     </div>
@@ -483,8 +579,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/13/深入理解计算机系统/提要/" rel="next" title="提要">
-                <i class="fa fa-chevron-left"></i> 提要
+              <a href="/2019/08/21/JVM/JVM知识总结/" rel="next" title="JVM知识总结">
+                <i class="fa fa-chevron-left"></i> JVM知识总结
               </a>
             
           </div>
@@ -492,10 +588,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/09/算法与数据结构/BubbleSort/" rel="prev" title="Bubble  Sort">
-                Bubble  Sort <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

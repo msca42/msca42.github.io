@@ -329,6 +329,271 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/08/31/架构/大型网站架构演化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="msca">
+      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="msca.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/31/架构/大型网站架构演化/" class="post-title-link" itemprop="url">大型网站架构演化</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-31 10:26:11 / 修改时间：10:29:35" itemprop="dateCreated datePublished" datetime="2019-08-31T10:26:11+08:00">2019-08-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>第一阶段：<ul>
+<li>文件，应用，数据库</li>
+<li>LAMP</li>
+<li>文件，应用程序和数据库共存于一台服务器中</li>
+</ul>
+</li>
+<li>第二阶段：<ul>
+<li>文件，应用，数据库</li>
+<li>应用服务和数据服务分离</li>
+<li>三台服务器：应用服务器，文件服务器和数据库服务器</li>
+<li>针对不同需求定制相应的服务器功能</li>
+<li>原因<ul>
+<li>单一服务器不能满足文件容量，抑或是CPU处理的需求</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第三阶段：<ul>
+<li>分布式缓存集群，文件，应用(本地缓存)，数据库</li>
+<li>缓存</li>
+<li>新增本地缓存和远程分布式缓存集群</li>
+<li>原因<ul>
+<li>根据八二原则：热点数据只有百分之20，所以将其缓存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第四阶段：<ul>
+<li>负载均衡，应用集群(本地缓存)，文件，分布式缓存集群，数据库</li>
+<li>应用服务器集群(负载均衡器)</li>
+<li>原因<ul>
+<li>单一服务器无法处理过量的请求</li>
+</ul>
+</li>
+<li>负载均衡器可以将用户请求分发到任意服务器上</li>
+</ul>
+</li>
+<li>第五阶段： <ul>
+<li>负载均衡，应用集群(本地缓存，数据访问模块)，分布式缓存集群文件，数据库(主从热备，读写分离) </li>
+<li>数据库（主从热备，读写分离）</li>
+<li>原因：<ul>
+<li>缓存之后，读操作从缓存中读取，除了部分缓存访问不命中，缓存过期；全部写操作</li>
+<li>以上操作，单一数据库不能很好的满足</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第六阶段<ul>
+<li>CDN，反向代理，负载均衡，应用集群(本地缓存，数据访问模块)，分布式缓存集群，文件，数据库(主从热备，读写分离) </li>
+<li>反向代理和CDN<ul>
+<li>CDN:网络提供商的机房</li>
+<li>反向代理：网站的中心机房(最先访问)</li>
+</ul>
+</li>
+<li>原因：<ul>
+<li>优化用户体验，提高网站加载速度；</li>
+<li>尽早的返回数据给用户，加快用户访问速度，减轻后端服务器的负载压力</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第七阶段<ul>
+<li>CDN，反向代理，负载均衡，应用集群(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
+<li>分布式数据库，分布式文件服务器</li>
+<li>关于分布式数据库： <ul>
+<li>分布式数据库只有在单表数据规模非常庞大</li>
+<li>更常用手段是业务发分库，将不同业务的数据库部署在不同的物理服务器。</li>
+</ul>
+</li>
+<li>原因：数据规模扩大</li>
+</ul>
+</li>
+<li>第八阶段<ul>
+<li>CDN，反向代理，负载均衡，应用集群(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
+<li>分布式数据库，分布式文件服务器，搜索引擎，NoSQL</li>
+<li>NoSQL,搜索引擎</li>
+<li>原因：<ul>
+<li>NoSQL,搜索对可伸缩的分布式特性具有更好的支持</li>
+<li>应用服务器用过<strong>统一数据访问模块</strong>访问各种数据，减轻应用程序管理诸多数据源的麻烦</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第九阶段<ul>
+<li>CDN，反向代理，负载均衡，应用集群A,消息队列，应用集群B(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
+<li>应用集群粒度细化，消息队列<ul>
+<li>将网站拆分成许多不用的应用，每个应用独立部署维护</li>
+<li>通过超链接或者通过消息队列进行数据分发</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第10阶段<ul>
+<li>CDN，反向代理，负载均衡，应用集群A,消息队列，应用集群B，分布式服务(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
+<li>分布式服务<ul>
+<li>将可复用的应用提取出来，应用系统只需管理用户界面，通过分布式服务调用公用业务服务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>参考来源：<a href="https://book.douban.com/subject/25723064/" target="_blank" rel="noopener">《大型网站技术架构：核心原理与案例分析》</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+	<div>
+	
+	</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/08/21/JVM/JVM知识总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1898,7 +2163,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1921,7 +2186,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
