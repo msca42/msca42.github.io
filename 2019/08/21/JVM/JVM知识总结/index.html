@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://http/images/JVMpandect.png">
 <meta property="og:image" content="http://http/images/运行时数据区.png">
 <meta property="og:image" content="http://http/images/javac.png">
-<meta property="og:updated_time" content="2019-09-09T10:53:21.886Z">
+<meta property="og:updated_time" content="2019-09-23T17:01:31.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM知识总结">
 <meta name="twitter:description" content="前言本文主要参考周志明的第二版《深入理解Java虚拟机》，芋道源码精尽java【虚拟机】,陈树义《Java基础系列》，对JVM知识进行一次有体系的复习。 思维导图 正文JVM是什么？ Java Virtual Machine，java虚拟机，主要任务是编译字节码文件，生成机器码。 Sun的定义有所区别:JVM指Java HotSpot Client and Server VM和Interprete">
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-09 18:53:21" itemprop="dateModified" datetime="2019-09-09T18:53:21+08:00">2019-09-09</time>
+                <time title="修改时间：2019-09-24 01:01:31" itemprop="dateModified" datetime="2019-09-24T01:01:31+08:00">2019-09-24</time>
               
             
           </span>
@@ -506,7 +506,7 @@
 <li>对程序上下文逻辑更进一步的验证</li>
 <li>程序局部变量在使用前是否由赋值</li>
 <li>方法的每条路径是否都有返回值</li>
-<li>是否所以的受查异常都被正确处理</li>
+<li>是否所有的受查异常都被正确处理</li>
 </ul>
 </li>
 <li>解语法糖（desugar）<ul>
@@ -515,7 +515,7 @@
 </li>
 <li>生成字节码<ul>
 <li>将前面生成的信息转化称字节码写到磁盘中</li>
-<li>添加实例构造器<init>()和类构造器<clinit>()<br>到语法树中</clinit></init></li>
+<li>添加实例构造器init()和类构造器clinit()到语法树中</li>
 <li>这里生成构造器的过程是一个收敛的过程：<ul>
 <li>先执行父类的实例构造器，然后初始化变量，最终执行语句块</li>
 </ul>
@@ -527,11 +527,6 @@
 </ul>
 </li>
 </ul>
-<p><strong>语法糖解析</strong></p>
-<ul>
-<li>TODO 泛型，自动装箱，自动拆箱，循环遍历，边长参数，条件编译，内部类，枚举类，断言语句，对枚举和字符串（JDK1.7支持）的switch支持，try语句中定于和关闭资源（jdk1.7支持） ，方式：追踪源码，反编译</li>
-</ul>
-<p>TODO checkstyle 小功能实现</p>
 <h5 id="运行期优化"><a href="#运行期优化" class="headerlink" title="运行期优化"></a>运行期优化</h5><p><strong>解释器和编译器</strong></p>
 <ul>
 <li>HotSpot同时包含解释器（interpreter）和编译器(c1,c2)<br>采用混合模式解释器+一个编译器</li>
