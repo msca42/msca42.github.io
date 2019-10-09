@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="本文为《大型网站技术架构：核心原理与案例分析》第一章的读书笔记总结 第一阶段： 文件，应用，数据库 LAMP 文件，应用程序和数据库共存于一台服务器中   第二阶段： 文件，应用，数据库 应用服务和数据服务分离 三台服务器：应用服务器，文件服务器和数据库服务器 针对不同需求定制相应的服务器功能 原因 单一服务器不能满足文件容量，抑或是CPU处理的需求     第三阶段： 分布式缓存集群，文件，应">
-<meta name="keywords" content="架构">
+  <meta name="description" content="history 有间客栈，吟游诗人，我们何以至此history 标题的history，借用linux下history对历史操作的回顾的意思，也是我最近自我内耗之后的一个结果。副标题主要来自B站我很喜欢的一个UP主（汤质）在他节目中说过的一段话，“我们何以至此，我们的父母何以至此，是90年代的下岗潮云云”，这三个名词都和故事有关，客栈说书人的惊堂木，中世纪欧洲吟游诗人的歌曲；所以我在这段时候自我内耗">
+<meta name="keywords" content="thought">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大型网站架构演化">
-<meta property="og:url" content="http://http://msca42.site/2019/08/31/架构/大型网站架构演化/index.html">
+<meta property="og:title" content="history">
+<meta property="og:url" content="http://http://msca42.site/2019/10/10/history/index.html">
 <meta property="og:site_name" content="msca.blog">
-<meta property="og:description" content="本文为《大型网站技术架构：核心原理与案例分析》第一章的读书笔记总结 第一阶段： 文件，应用，数据库 LAMP 文件，应用程序和数据库共存于一台服务器中   第二阶段： 文件，应用，数据库 应用服务和数据服务分离 三台服务器：应用服务器，文件服务器和数据库服务器 针对不同需求定制相应的服务器功能 原因 单一服务器不能满足文件容量，抑或是CPU处理的需求     第三阶段： 分布式缓存集群，文件，应">
+<meta property="og:description" content="history 有间客栈，吟游诗人，我们何以至此history 标题的history，借用linux下history对历史操作的回顾的意思，也是我最近自我内耗之后的一个结果。副标题主要来自B站我很喜欢的一个UP主（汤质）在他节目中说过的一段话，“我们何以至此，我们的父母何以至此，是90年代的下岗潮云云”，这三个名词都和故事有关，客栈说书人的惊堂木，中世纪欧洲吟游诗人的歌曲；所以我在这段时候自我内耗">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-05T12:06:04.308Z">
+<meta property="og:updated_time" content="2019-10-09T19:10:36.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大型网站架构演化">
-<meta name="twitter:description" content="本文为《大型网站技术架构：核心原理与案例分析》第一章的读书笔记总结 第一阶段： 文件，应用，数据库 LAMP 文件，应用程序和数据库共存于一台服务器中   第二阶段： 文件，应用，数据库 应用服务和数据服务分离 三台服务器：应用服务器，文件服务器和数据库服务器 针对不同需求定制相应的服务器功能 原因 单一服务器不能满足文件容量，抑或是CPU处理的需求     第三阶段： 分布式缓存集群，文件，应">
+<meta name="twitter:title" content="history">
+<meta name="twitter:description" content="history 有间客栈，吟游诗人，我们何以至此history 标题的history，借用linux下history对历史操作的回顾的意思，也是我最近自我内耗之后的一个结果。副标题主要来自B站我很喜欢的一个UP主（汤质）在他节目中说过的一段话，“我们何以至此，我们的父母何以至此，是90年代的下岗潮云云”，这三个名词都和故事有关，客栈说书人的惊堂木，中世纪欧洲吟游诗人的歌曲；所以我在这段时候自我内耗">
 
 
 
 
 
 
-  <link rel="canonical" href="http://http://msca42.site/2019/08/31/架构/大型网站架构演化/">
+  <link rel="canonical" href="http://http://msca42.site/2019/10/10/history/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>大型网站架构演化 | msca.blog</title>
+  <title>history | msca.blog</title>
   
 
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/08/31/架构/大型网站架构演化/">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/10/10/history/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="msca">
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">大型网站架构演化
+          <h1 class="post-title" itemprop="name headline">history
 
               
             
@@ -373,24 +373,12 @@
                 
               
 
-              <time title="创建时间：2019-08-31 10:26:11" itemprop="dateCreated datePublished" datetime="2019-08-31T10:26:11+08:00">2019-08-31</time>
+              <time title="创建时间：2019-10-10 03:05:10 / 修改时间：03:10:36" itemprop="dateCreated datePublished" datetime="2019-10-10T03:05:10+08:00">2019-10-10</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-05 20:06:04" itemprop="dateModified" datetime="2019-09-05T20:06:04+08:00">2019-09-05</time>
               
             
           </span>
@@ -407,7 +395,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/review/" itemprop="url" rel="index"><span itemprop="name">review</span></a></span>
 
                 
                 
@@ -442,109 +430,232 @@
       
 
       
-        <ul>
-<li>本文为《大型网站技术架构：核心原理与案例分析》第一章的读书笔记总结</li>
-<li>第一阶段：<ul>
-<li>文件，应用，数据库</li>
-<li>LAMP</li>
-<li>文件，应用程序和数据库共存于一台服务器中</li>
+        <h1 id="history"><a href="#history" class="headerlink" title="history "></a><center>history</center> </h1><h2 id="有间客栈，吟游诗人，我们何以至此"><a href="#有间客栈，吟游诗人，我们何以至此" class="headerlink" title="有间客栈，吟游诗人，我们何以至此"></a>有间客栈，吟游诗人，我们何以至此</h2><h2 id="history-1"><a href="#history-1" class="headerlink" title="history"></a>history</h2><ul>
+<li>标题的history，借用linux下history对历史操作的回顾的意思，也是我最近自我内耗之后的一个结果。副标题主要来自B站我很喜欢的一个UP主（汤质）在他节目中说过的一段话，“我们何以至此，我们的父母何以至此，是90年代的下岗潮云云”，这三个名词都和故事有关，客栈说书人的惊堂木，中世纪欧洲吟游诗人的歌曲；所以我在这段时候自我内耗之后，也想看看现在的我回顾我的这个故事该是怎样的。这里主要是点的堆砌来回忆当时的选择和原因，之后会逐步回顾到点。</li>
+</ul>
+<h2 id="我现在的状态："><a href="#我现在的状态：" class="headerlink" title="我现在的状态："></a>我现在的状态：</h2><p>自我内耗，不敢面对，自我梳理</p>
+<h2 id="时期，成长与缺失"><a href="#时期，成长与缺失" class="headerlink" title="时期，成长与缺失"></a>时期，成长与缺失</h2><p>2013下-2015上：网络篇</p>
+<ul>
+<li>目的<ul>
+<li>毕业的时候靠这个找份工作<br>cisco (CCNA-CCNP-CCIE)</li>
 </ul>
 </li>
-<li>第二阶段：<ul>
-<li>文件，应用，数据库</li>
-<li>应用服务和数据服务分离</li>
-<li>三台服务器：应用服务器，文件服务器和数据库服务器</li>
-<li>针对不同需求定制相应的服务器功能</li>
-<li>原因<ul>
-<li>单一服务器不能满足文件容量，抑或是CPU处理的需求</li>
+<li>CCNA<ul>
+<li>OSI七层模型,TCP/IP四层模型</li>
+<li>IPV4地址规划</li>
+<li>IPV6地址简介</li>
+<li>常见网络设备</li>
+<li>VLAN</li>
+<li>TRUNK</li>
+<li>VTP</li>
+<li>STP</li>
+<li>Ethernet聚合</li>
+<li>单臂路由</li>
+<li>静态路由</li>
+<li>RIP</li>
+<li>EIGRP</li>
+<li>OSPF</li>
+<li>WAN</li>
+<li>NAT</li>
+<li>ACL</li>
+<li>DHCP</li>
+<li>二层安全</li>
+</ul>
+</li>
+<li>CCNP<ul>
+<li>VLAN间路由</li>
+<li>STP-RSTP-MST(二层防环)</li>
+<li>网关冗余<ul>
+<li>代理ARP</li>
+<li>HSRP</li>
+<li>VRRP</li>
+<li>GLBP</li>
+</ul>
+</li>
+<li>DHCP</li>
+<li>SPAN</li>
+<li>NTP</li>
+<li>EIGRP<ul>
+<li>注入默认</li>
+<li>汇总</li>
+<li>非等价负载均衡</li>
+<li>验证</li>
+<li>Stub</li>
+</ul>
+</li>
+<li>OSPF<ul>
+<li>LSA</li>
+<li>网络类型</li>
+<li>特殊区域</li>
+<li>不规则区域解决</li>
+<li>验证</li>
+</ul>
+</li>
+<li>BGP<ul>
+<li>黑洞</li>
+<li>重定向</li>
+<li>属性与选路</li>
+<li>联邦和RR</li>
+<li>社团</li>
+</ul>
+</li>
+<li>路由重分布</li>
+</ul>
+</li>
+<li>CCIE<ul>
+<li>IPV6</li>
+<li>组播</li>
+<li>BGP</li>
+<li>MPLS-VPN</li>
+<li>Qos</li>
+<li>Feature</li>
+<li>Security</li>
+<li>Switching</li>
+<li>IGP</li>
+</ul>
+</li>
+<li>相关工具与知识<ul>
+<li>Cisco Packet Tracer</li>
+<li>GNS3</li>
+<li>Security CRT</li>
+<li>VMware WorkStation </li>
+</ul>
+</li>
+<li>分支<ul>
+<li>佳荷文学社<ul>
+<li>活动策划</li>
+</ul>
+</li>
+<li>电影工作室<ul>
+<li>PR，生日彩蛋，抛弃</li>
+</ul>
+</li>
+<li>国学社<ul>
+<li>少司命</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>第三阶段：<ul>
-<li>分布式缓存集群，文件，应用(本地缓存)，数据库</li>
-<li>缓存</li>
-<li>新增本地缓存和远程分布式缓存集群</li>
-<li>原因<ul>
-<li>根据八二原则：热点数据只有百分之20，所以将其缓存</li>
+</ul>
+<p>2014.12 -  剑网3</p>
+<ul>
+<li>目的<ul>
+<li>NULL</li>
+<li>函城柳/陌上长安</li>
+</ul>
+</li>
+<li>所见所闻（不分先后，想到写到）<ul>
+<li>东汉-清风，柒小寒阵营战</li>
+<li>成都木桩，副本态度</li>
+<li>秦皇陵-探雪，游戏网络  </li>
+<li>唐家堡，数据党，圆桌理论</li>
+<li>淮阴国士，策大，bbs版主，开源精神</li>
+<li>唐简: <ul>
+<li>哥德尔、艾舍尔、巴赫：GEB之大成者<ul>
+<li>腓特烈大帝、无忧宫</li>
+</ul>
+</li>
+<li>人工智能</li>
+<li>游戏化实战</li>
+</ul>
+</li>
+<li>第一个徒弟：<ul>
+<li>受制于自己对游戏认知不足，当时不知道怎么帮助她更好的游戏，所以当时采取的措施是躲着，甚至有点心疼</li>
+</ul>
+</li>
+<li>老寒<ul>
+<li>手把手</li>
+<li>借钱</li>
+</ul>
+</li>
+<li>凤舞，暖阳，咕咚<ul>
+<li>抛弃亲友，不想承担开团责任，负罪感</li>
+<li>武汉，西安</li>
+</ul>
+</li>
+<li>缘梦<ul>
+<li>在团队中，只干自己的事，对整个副本机制没有一个深刻了解，享受团队（团长）带来便利。自己没有大局观，对BOSS的所有机制不了解，半合格的螺丝钉。</li>
+</ul>
+</li>
+<li>海鳗，茗伊<ul>
+<li>API接口</li>
+</ul>
+</li>
+<li>818<ul>
+<li>帮主夫人</li>
+<li>gay</li>
+<li>文爱，语爱</li>
+<li>贴吧，键盘侠，KY</li>
+</ul>
+</li>
+<li>端游/手游<ul>
+<li>快餐，态度</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>第四阶段：<ul>
-<li>负载均衡，应用集群(本地缓存)，文件，分布式缓存集群，数据库</li>
-<li>应用服务器集群(负载均衡器)</li>
-<li>原因<ul>
-<li>单一服务器无法处理过量的请求</li>
+</ul>
+<p>2016.9-2018.7  运维实施篇<br>这里由于记忆和资料缺乏，顺序可能混乱，以下主要是当时工作/学习中接触到的一些，大多是名词</p>
+<ul>
+<li>F5</li>
+<li>notepad++</li>
+<li>SDNLAB<ul>
+<li>BGP实验</li>
 </ul>
 </li>
-<li>负载均衡器可以将用户请求分发到任意服务器上</li>
+<li>华为，新华三</li>
+<li>网管</li>
+<li>Vmware vSphere/VSAN/VClient</li>
+<li>数据中心<ul>
+<li>UPS机房</li>
 </ul>
 </li>
-<li>第五阶段： <ul>
-<li>负载均衡，应用集群(本地缓存，数据访问模块)，分布式缓存集群文件，数据库(主从热备，读写分离) </li>
-<li>数据库（主从热备，读写分离）</li>
-<li>原因：<ul>
-<li>缓存之后，读操作从缓存中读取，除了部分缓存访问不命中，缓存过期；全部写操作</li>
-<li>以上操作，单一数据库不能很好的满足</li>
+<li>腾云云计算大数据时代</li>
+<li>浪潮服务器<ul>
+<li>阵列</li>
 </ul>
 </li>
+<li>刘志军(知识星球)<ul>
+<li>python</li>
+<li>DJango</li>
+<li>Git</li>
 </ul>
 </li>
-<li>第六阶段<ul>
-<li>CDN，反向代理，负载均衡，应用集群(本地缓存，数据访问模块)，分布式缓存集群，文件，数据库(主从热备，读写分离) </li>
-<li>反向代理和CDN<ul>
-<li>CDN:网络提供商的机房</li>
-<li>反向代理：网站的中心机房(最先访问)</li>
+<li>罗辑思维–得到</li>
+<li>linux就该这么学<ul>
+<li>linux基础命令</li>
+<li>vim,Shell脚本</li>
+<li>用户身份，文件权限</li>
+<li>存储结构，磁盘划分</li>
+<li>RAID,LVM</li>
+<li>防火墙</li>
+<li>ssh 管理远程主机</li>
+<li>Apache 静态网站</li>
+<li>Vsftp</li>
+<li>无人值守</li>
+<li>LNMP</li>
+<li>openstack云服务</li>
 </ul>
 </li>
-<li>原因：<ul>
-<li>优化用户体验，提高网站加载速度；</li>
-<li>尽早的返回数据给用户，加快用户访问速度，减轻后端服务器的负载压力</li>
+<li>纵向加密<ul>
+<li>非对称rsa</li>
+<li>sm2</li>
 </ul>
 </li>
+<li>软件部署<ul>
+<li>jre</li>
+<li>kafka</li>
+<li>redis</li>
 </ul>
 </li>
-<li>第七阶段<ul>
-<li>CDN，反向代理，负载均衡，应用集群(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
-<li>分布式数据库，分布式文件服务器</li>
-<li>关于分布式数据库： <ul>
-<li>分布式数据库只有在单表数据规模非常庞大</li>
-<li>更常用手段是业务发分库，将不同业务的数据库部署在不同的物理服务器。</li>
+<li>知识星球<ul>
+<li>stormzhang</li>
 </ul>
 </li>
-<li>原因：数据规模扩大</li>
+<li>极客时间<ul>
+<li>左耳听风</li>
 </ul>
 </li>
-<li>第八阶段<ul>
-<li>CDN，反向代理，负载均衡，应用集群(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
-<li>分布式数据库，分布式文件服务器，搜索引擎，NoSQL</li>
-<li>NoSQL,搜索引擎</li>
-<li>原因：<ul>
-<li>NoSQL,搜索对可伸缩的分布式特性具有更好的支持</li>
-<li>应用服务器用过<strong>统一数据访问模块</strong>访问各种数据，减轻应用程序管理诸多数据源的麻烦</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第九阶段<ul>
-<li>CDN，反向代理，负载均衡，应用集群A,消息队列，应用集群B(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
-<li>应用集群粒度细化，消息队列<ul>
-<li>将网站拆分成许多不用的应用，每个应用独立部署维护</li>
-<li>通过超链接或者通过消息队列进行数据分发</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第10阶段<ul>
-<li>CDN，反向代理，负载均衡，应用集群A,消息队列，应用集群B，分布式服务(本地缓存，<strong>统一数据访问模块</strong>)，分布式缓存集群，分布式文件，分布式数据库</li>
-<li>分布式服务<ul>
-<li>将可复用的应用提取出来，应用系统只需管理用户界面，通过分布式服务调用公用业务服务</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>参考来源：<a href="https://book.douban.com/subject/25723064/" target="_blank" rel="noopener">《大型网站技术架构：核心原理与案例分析》</a></li>
 </ul>
 
       
@@ -586,7 +697,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/架构/" rel="tag"># 架构</a>
+            <a href="/tags/thought/" rel="tag"># thought</a>
           
         </div>
       
@@ -599,8 +710,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/21/JVM/JVM知识总结/" rel="next" title="JVM知识总结">
-                <i class="fa fa-chevron-left"></i> JVM知识总结
+              <a href="/2019/08/31/架构/大型网站架构演化/" rel="next" title="大型网站架构演化">
+                <i class="fa fa-chevron-left"></i> 大型网站架构演化
               </a>
             
           </div>
@@ -608,10 +719,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/10/history/" rel="prev" title="history">
-                history <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -655,8 +762,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -800,6 +916,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#history"><span class="nav-number">1.</span> <span class="nav-text">history </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有间客栈，吟游诗人，我们何以至此"><span class="nav-number">1.1.</span> <span class="nav-text">有间客栈，吟游诗人，我们何以至此</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history-1"><span class="nav-number">1.2.</span> <span class="nav-text">history</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我现在的状态："><span class="nav-number">1.3.</span> <span class="nav-text">我现在的状态：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时期，成长与缺失"><span class="nav-number">1.4.</span> <span class="nav-text">时期，成长与缺失</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
