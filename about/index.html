@@ -383,8 +383,14 @@
           
 
   
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
 
-
+  
+  
 
         </div>
         
@@ -559,7 +565,21 @@
   <span class="author" itemprop="copyrightHolder">msca</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">8k</span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">7 分钟</span>
   
 </div>
 
@@ -681,6 +701,47 @@
   
   
 
+
+  
+    <!-- LOCAL: You can save these files to your site and update links -->
+
+  
+     <!-- <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script> -->
+<script src="https://billts.site/js/gitment.js"></script>
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/> -->
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<!-- END LOCAL -->
+
+<style>
+#gitment-container a {
+  border-bottom: none;
+}
+
+</style>
+
+<script>
+  function renderGitment() {
+    var gitment = new Gitment({
+      id: '1554659571000',
+      owner: 'msca42',
+      repo: 'msca42.github.io',
+      
+      oauth: {
+      
+      
+        client_secret: 'd354a88425e96cb7276f780797970fa97edd8d50',
+      
+        client_id: '2979aacbc7b09d48a407'
+      }
+    });
+    gitment.render('gitment-container');
+  }
+
+  
+    renderGitment();
+  
+</script>
 
   
 
