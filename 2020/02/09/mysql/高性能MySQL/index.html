@@ -796,14 +796,43 @@
           
 
   
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
+       
+         <div id="gitment-container"></div>
+       
     </div>
+  
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      theme: myTheme,
+      owner: '',
+      repo: '',
+      oauth: {
+        client_id: '2979aacbc7b09d48a407',
+        client_secret: 'd354a88425e96cb7276f780797970fa97edd8d50'
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
 
-  
-  
 
         </div>
         
@@ -996,8 +1025,8 @@
 
 
         
-      </div>
-    </main>
+      </main></div>
+    
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
@@ -1065,7 +1094,7 @@
     
 
     
-  </div>
+  
 
   
 
