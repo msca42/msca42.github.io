@@ -329,6 +329,262 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/03/15/mysql/高性能MySQL(六)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="msca">
+      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="msca.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/03/15/mysql/高性能MySQL(六)/" class="post-title-link" itemprop="url">高性能MySQL读书笔记(六)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-15 20:07:10 / 修改时间：22:00:43" itemprop="dateCreated datePublished" datetime="2020-03-15T20:07:10+08:00">2020-03-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="创建高性能索引-下"><a href="#创建高性能索引-下" class="headerlink" title="创建高性能索引(下)"></a>创建高性能索引(下)</h1><h2 id="MySQL查询的局限性"><a href="#MySQL查询的局限性" class="headerlink" title="MySQL查询的局限性"></a>MySQL查询的局限性</h2><ul>
+<li>异史氏曰: 所有局限性应当遵循版本是否修复相应功能。以下列举列举了本书中的具体例子</li>
+<li>关联子查询<ul>
+<li>MySQL将相关的外层表压到子查询中</li>
+<li>用测试来验证对子查询的执行计划和响应时间</li>
+</ul>
+</li>
+<li>UNION的限制<ul>
+<li>无法将限制条件从外层”下推”到内层</li>
+<li>MySQL会将两个表都存放到同一个临时表中,然后再取出</li>
+</ul>
+</li>
+<li>索引合并优化</li>
+<li>等值传递</li>
+<li>并行执行</li>
+<li>哈希关联</li>
+<li>松散索引扫描</li>
+<li>最大值和最小值优化</li>
+<li>在同一个表上查询和更新</li>
+</ul>
+<h2 id="查询优化器的提示-hint"><a href="#查询优化器的提示-hint" class="headerlink" title="查询优化器的提示(hint)"></a>查询优化器的提示(hint)</h2><ul>
+<li>如果对优化器选择的执行计划不满意，可以使用优化器的几个提示(hint)来控制最终的执行计划</li>
+<li>MySQL升级时，优化器提示可能就会失效，即使用前查询相关版本</li>
+</ul>
+<h2 id="优化特定类型的查询"><a href="#优化特定类型的查询" class="headerlink" title="优化特定类型的查询"></a>优化特定类型的查询</h2><ul>
+<li>COUNT()<ul>
+<li>作用<ul>
+<li>统计某个列的数量，也可以统计行数。在统计列值时要求列值时非空的(不统计NULL)，如果括号中指定了列或列的表达式，则统计的就是整个表达式有值的结果数</li>
+<li>统计结果集的行数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>优化关联查询<ul>
+<li>确保ON或者USING子句中的列上有索引。</li>
+<li>确保任何的GROUP BY和ORDER BY中的表达式值涉及到一个表中的列，这样MySQL才能用索引来优化这个过程</li>
+<li>升级注意</li>
+</ul>
+</li>
+<li>优化子查询<ul>
+<li>5.6之前尽量用关联查询替代</li>
+</ul>
+</li>
+<li>优化GROUP BY和DISTINCT</li>
+<li>优化LIMIT分页<ul>
+<li>尽可能使用索引覆盖扫描，而不是查询所有列</li>
+</ul>
+</li>
+<li>使用用户自定义变量<ul>
+<li>不能使用<ul>
+<li>无法查询缓存</li>
+<li>不能在使用常量或标识符的地方使用</li>
+<li>用户自定义变量生命周期为一个连接，不能做连接间的通信</li>
+<li>尽量不要在连接池或持久化连接中使用</li>
+<li>代码版本兼容性问题</li>
+<li>不能显示地声明自定义变量的类型</li>
+<li>赋值表达式应使用括号</li>
+<li>使用未定义变量不会产生任何语法错误</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="优化总结"><a href="#优化总结" class="headerlink" title="优化总结"></a>优化总结</h2><ul>
+<li>不做，少做，快速做</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+	<div>
+	
+	</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/03/01/mysql/高性能MySQL(五)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2979,7 +3235,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3125,7 +3381,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">14k</span>
+    <span title="站点总字数">15k</span>
   
 
   
