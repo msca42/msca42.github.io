@@ -329,6 +329,260 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/03/29/mysql/高性能MySQL(八)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="msca">
+      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="msca.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/03/29/mysql/高性能MySQL(八)/" class="post-title-link" itemprop="url">高性能MySQL读书笔记(八)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-29 22:43:10 / 修改时间：23:46:04" itemprop="dateCreated datePublished" datetime="2020-03-29T22:43:10+08:00">2020-03-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="复制的常见问题"><a href="#复制的常见问题" class="headerlink" title="复制的常见问题"></a>复制的常见问题</h3><ul>
+<li>数据损坏或丢失错误<ul>
+<li>主库意外关闭</li>
+<li>备库意外关闭</li>
+<li>主库二进制日志损坏</li>
+<li>备库中继日志损坏</li>
+<li>二进制日志与InnoDB事务日志不同步</li>
+</ul>
+</li>
+<li>使用非事物型表</li>
+<li>混合事物型和非事务型表</li>
+<li>不确定语句</li>
+<li>主库和备库使用不同的存储引擎</li>
+<li>备库发生数据改变</li>
+<li>不唯一的服务器ID</li>
+<li>未定义的服务器ID</li>
+<li>对未复制数据的依赖性</li>
+<li>丢失的临时表</li>
+<li>不复制所有的更新</li>
+<li>InnoDB加锁读引起的锁争用</li>
+<li>在主-主复制结构中写入两台主库</li>
+<li>过大的复制延迟<ul>
+<li>产生延迟方式<ul>
+<li>突然产生延迟再跟上<ul>
+<li>由于一条运行时间很长的查询导致</li>
+</ul>
+</li>
+<li>稳定的延迟增加<ul>
+<li>没有长时间运行查询时也会出现</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>备库优化方式(禁止额外工作，减少备库的负载)<ul>
+<li>不要重复写操作中代价较高的部分</li>
+<li>在复制之外并行写入</li>
+<li>为复制线程预取缓存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>来自主库过大的包</li>
+<li>受限制的复制带宽</li>
+<li>磁盘空间不足</li>
+</ul>
+<h3 id="MySQL复制的一些高级特性"><a href="#MySQL复制的一些高级特性" class="headerlink" title="MySQL复制的一些高级特性"></a>MySQL复制的一些高级特性</h3><ul>
+<li>半同步复制<ul>
+<li>确保备库拥有主库数据的拷贝，减少潜在的数据丢失危险</li>
+</ul>
+</li>
+<li>复制心跳<ul>
+<li>保证备库一直与主库相关联，避免悄无声息的断开连接</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>使用复制时需要注意项<ul>
+<li>使用Percona Toolkit的pt-table-checksum以确定备库是主库的真实拷贝</li>
+<li>监控复制以确定其正在运行并且没有落后于主库</li>
+<li>理解复制的异步本质，并且设计你的应用以避免或容忍从备库读取脏的数据</li>
+<li>在一个复制topo中不要写入超过一个服务器，把备库配置为只读，并降低权限以组织对数据的改变</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+	<div>
+	
+	</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/03/21/mysql/高性能MySQL(七)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1147,6 +1401,270 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/03/01/mysql/高性能MySQL(四)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="msca">
+      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="msca.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/03/01/mysql/高性能MySQL(四)/" class="post-title-link" itemprop="url">高性能MySQL读书笔记(四)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-01 21:12:10 / 修改时间：22:48:01" itemprop="dateCreated datePublished" datetime="2020-03-01T21:12:10+08:00">2020-03-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="创建高性能索引-下"><a href="#创建高性能索引-下" class="headerlink" title="创建高性能索引(下)"></a>创建高性能索引(下)</h1><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><ul>
+<li>独立的列<ul>
+<li>索引列不能是表达式的一部分，也不能是函数的参数</li>
+</ul>
+</li>
+<li>前缀索引与索引的选择性<ul>
+<li>索引的选择性<ul>
+<li>不重复的索引值(也称为基数)和数据表的记录总数(#T)的比值，范围从1/#T到1之间,索引的选择性越高，查询效率越高</li>
+</ul>
+</li>
+<li>前缀索引<ul>
+<li>足够长的前缀，保证其能代表唯一的索引，即前缀的基数接近于完整列的”基数”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>索引列顺序<ul>
+<li>在不考虑排序和分组时,将选择性最高的列放到索引最前列</li>
+</ul>
+</li>
+<li>聚簇索引<ul>
+<li>聚簇索引并不是一种单独的索引类型，而是一种数据存储方式，具体的细节依赖与其实现方式，在InnoDB中保存了数据行和B-Tree索引</li>
+<li>当表有聚簇索引时，他的数据行实际上存放在索引的叶子页中</li>
+<li>聚簇表示数据行与相邻的键值紧凑地存储在一起</li>
+</ul>
+</li>
+<li>覆盖索引<ul>
+<li>一个索引包含所有需要查询的字段的值，其必须存储索引列的值。</li>
+<li>MySQL只能使用B-Tree索引做覆盖索引</li>
+<li>覆盖索引只能覆盖那些值访问索引中部分列的查询</li>
+</ul>
+</li>
+<li>重复与冗余<ul>
+<li>重复索引是指在相同的列上按照相同的顺序创建的相同类型的索引</li>
+<li>解决方法<ul>
+<li>使用shlomi Noach的common_schema中的一些视图来定位。</li>
+<li>使用Percona Toolkit中的pt-duplicate-keychecker</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>维护索引和表<ul>
+<li>找到并修复损坏的表</li>
+<li>维护准确的索引统计信息</li>
+<li>减少索引和数据的碎片<ul>
+<li>行碎片(InnoDB没有)<ul>
+<li>数据行被存储为多个地方的多个片段中  </li>
+</ul>
+</li>
+<li>行间碎片<ul>
+<li>逻辑上顺序的页，或者行在磁盘上不是顺序存储的。对全表扫描和聚簇索引操作影响较大  </li>
+</ul>
+</li>
+<li>剩余空间碎片<ul>
+<li>数据页中有大量的空余空间</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>三大原则<ul>
+<li>单行访问很慢。最好读取的块中能包含尽可能多所需的行，使用索引可以创建位置引用以提升效率</li>
+<li>按顺序访问范围数据很快<ul>
+<li>顺序I/O不需要多次磁盘寻道</li>
+<li>如果服务器能按需顺序读取数据，那么就不需要多余的操作了</li>
+</ul>
+</li>
+<li>索引覆盖查询是很快的</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+	<div>
+	
+	</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/03/01/mysql/高性能MySQL(五)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1370,270 +1888,6 @@
 <li>提前终止查询</li>
 <li>等值传播</li>
 <li>列表IN()的比较</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-	<div>
-	
-	</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/03/01/mysql/高性能MySQL(四)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="msca">
-      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="msca.blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/03/01/mysql/高性能MySQL(四)/" class="post-title-link" itemprop="url">高性能MySQL读书笔记(四)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-01 21:12:10 / 修改时间：22:48:01" itemprop="dateCreated datePublished" datetime="2020-03-01T21:12:10+08:00">2020-03-01</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.6k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="创建高性能索引-下"><a href="#创建高性能索引-下" class="headerlink" title="创建高性能索引(下)"></a>创建高性能索引(下)</h1><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><ul>
-<li>独立的列<ul>
-<li>索引列不能是表达式的一部分，也不能是函数的参数</li>
-</ul>
-</li>
-<li>前缀索引与索引的选择性<ul>
-<li>索引的选择性<ul>
-<li>不重复的索引值(也称为基数)和数据表的记录总数(#T)的比值，范围从1/#T到1之间,索引的选择性越高，查询效率越高</li>
-</ul>
-</li>
-<li>前缀索引<ul>
-<li>足够长的前缀，保证其能代表唯一的索引，即前缀的基数接近于完整列的”基数”</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>索引列顺序<ul>
-<li>在不考虑排序和分组时,将选择性最高的列放到索引最前列</li>
-</ul>
-</li>
-<li>聚簇索引<ul>
-<li>聚簇索引并不是一种单独的索引类型，而是一种数据存储方式，具体的细节依赖与其实现方式，在InnoDB中保存了数据行和B-Tree索引</li>
-<li>当表有聚簇索引时，他的数据行实际上存放在索引的叶子页中</li>
-<li>聚簇表示数据行与相邻的键值紧凑地存储在一起</li>
-</ul>
-</li>
-<li>覆盖索引<ul>
-<li>一个索引包含所有需要查询的字段的值，其必须存储索引列的值。</li>
-<li>MySQL只能使用B-Tree索引做覆盖索引</li>
-<li>覆盖索引只能覆盖那些值访问索引中部分列的查询</li>
-</ul>
-</li>
-<li>重复与冗余<ul>
-<li>重复索引是指在相同的列上按照相同的顺序创建的相同类型的索引</li>
-<li>解决方法<ul>
-<li>使用shlomi Noach的common_schema中的一些视图来定位。</li>
-<li>使用Percona Toolkit中的pt-duplicate-keychecker</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>维护索引和表<ul>
-<li>找到并修复损坏的表</li>
-<li>维护准确的索引统计信息</li>
-<li>减少索引和数据的碎片<ul>
-<li>行碎片(InnoDB没有)<ul>
-<li>数据行被存储为多个地方的多个片段中  </li>
-</ul>
-</li>
-<li>行间碎片<ul>
-<li>逻辑上顺序的页，或者行在磁盘上不是顺序存储的。对全表扫描和聚簇索引操作影响较大  </li>
-</ul>
-</li>
-<li>剩余空间碎片<ul>
-<li>数据页中有大量的空余空间</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>三大原则<ul>
-<li>单行访问很慢。最好读取的块中能包含尽可能多所需的行，使用索引可以创建位置引用以提升效率</li>
-<li>按顺序访问范围数据很快<ul>
-<li>顺序I/O不需要多次磁盘寻道</li>
-<li>如果服务器能按需顺序读取数据，那么就不需要多余的操作了</li>
-</ul>
-</li>
-<li>索引覆盖查询是很快的</li>
 </ul>
 </li>
 </ul>
@@ -2886,311 +3140,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2019/10/18/linux/从init到systemd/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="msca">
-      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="msca.blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/18/linux/从init到systemd/" class="post-title-link" itemprop="url">From init to systemd</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-18 02:31:10" itemprop="dateCreated datePublished" datetime="2019-10-18T02:31:10+08:00">2019-10-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-02-08 23:28:41" itemprop="dateModified" datetime="2020-02-08T23:28:41+08:00">2020-02-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">3.4k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">3 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>红帽RHEL 7系统已经替换掉了熟悉的初始化进程服务System V init，正式采用全新的systemd初始化进程服务。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><center>systemd与System V init的区别以及作用</center>
-
-<table>
-<thead>
-<tr>
-<th>System V init运行级别</th>
-<th>systemd目标名称</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>runlevel0.target, poweroff.target</td>
-<td>关机</td>
-</tr>
-<tr>
-<td>1</td>
-<td>runlevel1.target, rescue.target</td>
-<td>单用户模式</td>
-</tr>
-<tr>
-<td>2</td>
-<td>runlevel2.target, multi-user.target</td>
-<td>等同于级别3</td>
-</tr>
-<tr>
-<td>3</td>
-<td>runlevel3.target, multi-user.target</td>
-<td>多用户的文本界面</td>
-</tr>
-<tr>
-<td>4</td>
-<td>runlevel4.target, multi-user.target</td>
-<td>等同于级别3</td>
-</tr>
-<tr>
-<td>5</td>
-<td>runlevel5.target, graphical.target</td>
-<td>多用户的图形界面</td>
-</tr>
-<tr>
-<td>6</td>
-<td>runlevel6.target, reboot.target</td>
-<td>重启</td>
-</tr>
-<tr>
-<td>emergency</td>
-<td>emergency.target</td>
-<td>紧急Shell</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p>设置运行级别</p>
-<ul>
-<li><p>命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl [command][unit.target]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>comand详解：</p>
-<ul>
-<li>get-default :取得当前的target</li>
-<li>set-default :设置指定的target为默认的运行级别</li>
-<li>isolate :切换到指定的运行级别</li>
-</ul>
-</li>
-<li><p>unit.target 为目标名称</p>
-</li>
-</ul>
-</li>
-<li><p>配置系统服务</p>
-<ul>
-<li><p>service</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service 服务 start/stop/restart</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>systemctl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start/stop/restart   unit.type（network.service）</span><br><span class="line">systemctl enable/disable  unit.service</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>chkconfig</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig [服务] on/off 设置服务开机启动/禁止</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>查看系统所有服务</p>
-<ul>
-<li><p>命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl [command] [–type=TYPE] [–all]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>command 详解</p>
-<ul>
-<li>list-units：依据unit列出所有启动的unit。加上 –all 才会列出没启动的unit;</li>
-<li>list-unit-files: 依据/usr/lib/systemd/system/ 内的启动文件，列出启动文件列表</li>
-</ul>
-</li>
-<li><p>–type=TYPE - 为unit type, 主要有service, socket, target</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><p>（1）<a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html" target="_blank" rel="noopener">Systemd 入门教程：命令篇</a></p>
-<p>（2）<a href="https://blog.csdn.net/u012486840/article/details/53161574" target="_blank" rel="noopener">CentOS7中systemctl的使用</a></p>
-<p>（3）<a href="http://www.linuxprobe.com/chapter-01.html" target="_blank" rel="noopener">linux就该这么学第一章</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-	<div>
-	
-	</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3239,7 +3188,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3389,7 +3338,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">17k</span>
+    <span title="站点总字数">18k</span>
   
 
   
@@ -3398,7 +3347,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">15 分钟</span>
+    <span title="站点阅读时长">16 分钟</span>
   
 </div>
 
