@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="说明 文章来源 作者:Ambarish Kumar  正文 简述:在这篇文章中：我们列举了linux下最好的Adobe替代方法，这些linux下的Adobe全家桶(创建套装)替代方案也都是免费且开源的  现在，在Adobe创意空间中，Adobe提供了一系列的基于Adobe全家桶的软件，它不仅限于PS，还包含许多其他软件，主要在网页设计，logo制作，视频编辑，PDF编辑以及更多方面提供帮助  然而">
-<meta name="keywords" content="ARTS">
+  <meta name="description" content="从策略模式谈设计模式 《Head First 设计模式》第一章主要通过一个策略模式的案例来展示设计模式是如何运行的  Duck是一个超类，一般来说会有属性与行为，我们通过继承重写其方法能个得到不同的Duck。但是我们只能重写它的通用属性，我们无法通过继承扩展，我们可以通过在子类中添加方法来实现某种行为，但是这样的作法并不利于整体复用。  所以这里采用了将Duck类与其行为分离，单独行为实现单独接口">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Review-One">
-<meta property="og:url" content="http://http://msca42.site/2020/03/17/mysql/review/r1/index.html">
+<meta property="og:title" content="《Head First 设计模式》 读书笔记(一)">
+<meta property="og:url" content="http://http://msca42.site/2020/05/10/mysql/HeadFirst设计模式/策略模式/index.html">
 <meta property="og:site_name" content="msca.blog">
-<meta property="og:description" content="说明 文章来源 作者:Ambarish Kumar  正文 简述:在这篇文章中：我们列举了linux下最好的Adobe替代方法，这些linux下的Adobe全家桶(创建套装)替代方案也都是免费且开源的  现在，在Adobe创意空间中，Adobe提供了一系列的基于Adobe全家桶的软件，它不仅限于PS，还包含许多其他软件，主要在网页设计，logo制作，视频编辑，PDF编辑以及更多方面提供帮助  然而">
+<meta property="og:description" content="从策略模式谈设计模式 《Head First 设计模式》第一章主要通过一个策略模式的案例来展示设计模式是如何运行的  Duck是一个超类，一般来说会有属性与行为，我们通过继承重写其方法能个得到不同的Duck。但是我们只能重写它的通用属性，我们无法通过继承扩展，我们可以通过在子类中添加方法来实现某种行为，但是这样的作法并不利于整体复用。  所以这里采用了将Duck类与其行为分离，单独行为实现单独接口">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-16T16:51:40.481Z">
+<meta property="og:updated_time" content="2020-05-10T14:49:22.314Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Review-One">
-<meta name="twitter:description" content="说明 文章来源 作者:Ambarish Kumar  正文 简述:在这篇文章中：我们列举了linux下最好的Adobe替代方法，这些linux下的Adobe全家桶(创建套装)替代方案也都是免费且开源的  现在，在Adobe创意空间中，Adobe提供了一系列的基于Adobe全家桶的软件，它不仅限于PS，还包含许多其他软件，主要在网页设计，logo制作，视频编辑，PDF编辑以及更多方面提供帮助  然而">
+<meta name="twitter:title" content="《Head First 设计模式》 读书笔记(一)">
+<meta name="twitter:description" content="从策略模式谈设计模式 《Head First 设计模式》第一章主要通过一个策略模式的案例来展示设计模式是如何运行的  Duck是一个超类，一般来说会有属性与行为，我们通过继承重写其方法能个得到不同的Duck。但是我们只能重写它的通用属性，我们无法通过继承扩展，我们可以通过在子类中添加方法来实现某种行为，但是这样的作法并不利于整体复用。  所以这里采用了将Duck类与其行为分离，单独行为实现单独接口">
 
 
 
 
 
 
-  <link rel="canonical" href="http://http://msca42.site/2020/03/17/mysql/review/r1/">
+  <link rel="canonical" href="http://http://msca42.site/2020/05/10/mysql/HeadFirst设计模式/策略模式/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Review-One | msca.blog</title>
+  <title>《Head First 设计模式》 读书笔记(一) | msca.blog</title>
   
 
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/03/17/mysql/review/r1/">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/05/10/mysql/HeadFirst设计模式/策略模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="msca">
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Review-One
+          <h1 class="post-title" itemprop="name headline">《Head First 设计模式》 读书笔记(一)
 
               
             
@@ -373,7 +373,7 @@
                 
               
 
-              <time title="创建时间：2020-03-17 00:46:39 / 修改时间：00:51:40" itemprop="dateCreated datePublished" datetime="2020-03-17T00:46:39+08:00">2020-03-17</time>
+              <time title="创建时间：2020-05-10 22:10:10 / 修改时间：22:49:22" itemprop="dateCreated datePublished" datetime="2020-05-10T22:10:10+08:00">2020-05-10</time>
             
 
             
@@ -395,7 +395,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
 
                 
                 
@@ -424,7 +424,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.6k</span>
+                <span title="本文字数">1.1k</span>
               
 
               
@@ -458,34 +458,24 @@
       
 
       
-        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
-<li><a href="https://itsfoss.com/adobe-alternatives-linux/" target="_blank" rel="noopener">文章来源</a></li>
-<li>作者:<a href="https://itsfoss.com/author/ambarish/" target="_blank" rel="noopener">Ambarish Kumar</a></li>
-</ul>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ul>
-<li><p><strong>简述:在这篇文章中：我们列举了linux下最好的Adobe替代方法，这些linux下的Adobe全家桶(创建套装)替代方案也都是免费且开源的</strong></p>
+        <h2 id="从策略模式谈设计模式"><a href="#从策略模式谈设计模式" class="headerlink" title="从策略模式谈设计模式"></a>从策略模式谈设计模式</h2><ul>
+<li><p>《Head First 设计模式》第一章主要通过一个策略模式的案例来展示设计模式是如何运行的</p>
 </li>
-<li><p>现在，在Adobe创意空间中，Adobe提供了一系列的基于Adobe全家桶的软件，它不仅限于PS，还包含许多其他软件，主要在网页设计，logo制作，视频编辑，PDF编辑以及更多方面提供帮助</p>
+<li><p>Duck是一个超类，一般来说会有属性与行为，我们通过继承重写其方法能个得到不同的Duck。但是我们只能重写它的通用属性，我们无法通过继承扩展，我们可以通过在子类中添加方法来实现某种行为，但是这样的作法并不利于整体复用。</p>
 </li>
-<li><p>然而，Adobe全家桶是一个花费你一大笔钱购买专利的软件，并且如果你是一个linux使用者，即使你愿意花这笔钱，平台也获取不到。</p>
+<li><p>所以这里采用了将Duck类与其行为分离，单独行为实现单独接口的方式。然后再组合的形式，将这一问题化解。行为接口作为Duck类的属性，具体的方法隐藏在接口中，这样组合的方式减少了继承的耦合性。</p>
 </li>
-<li><p>在这篇文章中，我们正准备介绍一些linux下优秀的Adobe产品替代品。</p>
+<li><p>这一模式就是策略模式: 定义了算法族，分别分装起来，让它们之间可以相互替换。此模式让算法的变化独立于使用算法的客户。这一模式产生的动机其中之一正是由于客户程序中又难以割舍的成分时，新增新的行为的困难性。总结起来其实就是：<strong>多用组合，少用继承</strong></p>
 </li>
 </ul>
-<h3 id="linxu下最好的Adobe替代品"><a href="#linxu下最好的Adobe替代品" class="headerlink" title="linxu下最好的Adobe替代品"></a>linxu下最好的Adobe替代品</h3><ul>
-<li><p>如果你不在一个阅读文章的氛围中，你可以观看我们YouTube频道，<a href="https://www.youtube.com/c/itsfoss?sub_confirmation=1" target="_blank" rel="noopener">订阅</a>我们YouTube 频道来获取更多Linux相关视频</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a href="https://book.douban.com/subject/2243615/" target="_blank" rel="noopener">《Head First 设计模式》</a></p>
 </li>
-<li><p>在这个列表中我确实包含了一个非开源项目，这是因为我真的找不到linux下相近的Adobe Acrobat替代品</p>
-</li>
-<li><p>除此之外，我们开始吧！</p>
+<li><p><a href="https://book.douban.com/subject/1052241/" target="_blank" rel="noopener">设计模式</a></p>
 </li>
 </ul>
-<h3 id="1-GIMP-PS的替代品"><a href="#1-GIMP-PS的替代品" class="headerlink" title="1.GIMP:PS的替代品"></a><strong>1.GIMP:PS的替代品</strong></h3><ul>
-<li>PS对于正规专业的使用者老说是一款最受欢迎并且使用广泛的制图编辑工具。它是一款对于照片编辑，网页设计和图形创作者极致的工具</li>
-<li>当谈及PS替代品时，GIMP提供了最好的替代</li>
-<li>在GNU/Linux,Mac，Windows和其他操作系统上，GIMP是一款免费获取，开源的图像编辑。它提供了少量复杂的工具使得图形设计和摄影师的工作更简单。</li>
-<li>从高质量的照片处理到普通的艺术创作，GIMP包含创建图标，图形设计元素，色彩管理特性等选择。并且跟随第三方插件的定制化选择使你的工作更简单。</li>
-<li>可能GIMP已经在你的系统上安装了，如果没有，你可以在办公软件仓库中搜索来安装GIMP</li>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ul>
+<li><a href="https://github.com/msca42/reading/tree/master/Duck" target="_blank" rel="noopener">相关代码</a></li>
 </ul>
 
       
@@ -527,7 +517,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ARTS/" rel="tag"># ARTS</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -540,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/15/mysql/高性能MySQL(六)/" rel="next" title="高性能MySQL读书笔记(六)">
-                <i class="fa fa-chevron-left"></i> 高性能MySQL读书笔记(六)
+              <a href="/2020/04/25/mysql/msca/读书笔记(一)/" rel="next" title="点石成金读书笔记(1)">
+                <i class="fa fa-chevron-left"></i> 点石成金读书笔记(1)
               </a>
             
           </div>
@@ -549,10 +539,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/21/mysql/高性能MySQL(七)/" rel="prev" title="高性能MySQL读书笔记(七)">
-                高性能MySQL读书笔记(七) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -804,7 +790,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linxu下最好的Adobe替代品"><span class="nav-number">2.1.</span> <span class="nav-text">linxu下最好的Adobe替代品</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-GIMP-PS的替代品"><span class="nav-number">2.2.</span> <span class="nav-text">1.GIMP:PS的替代品</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#从策略模式谈设计模式"><span class="nav-number">1.</span> <span class="nav-text">从策略模式谈设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
@@ -990,7 +976,7 @@
 <script>
   function renderGitment() {
     var gitment = new Gitment({
-      id: '1584377199000',
+      id: '1589119810000',
       owner: 'msca42',
       repo: 'msca42.github.io',
       
@@ -1032,7 +1018,7 @@
 <script>
   function renderGitment() {
     var gitment = new Gitment({
-      id: '1584377199000',
+      id: '1589119810000',
       owner: 'msca42',
       repo: 'msca42.github.io',
       
