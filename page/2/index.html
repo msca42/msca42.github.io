@@ -329,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/03/01/mysql/高性能MySQL(五)/">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/03/01/mysql/高性能MySQL(四)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="msca">
@@ -349,7 +349,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2020/03/01/mysql/高性能MySQL(五)/" class="post-title-link" itemprop="url">高性能MySQL读书笔记(五)</a>
+                <a href="/2020/03/01/mysql/高性能MySQL(四)/" class="post-title-link" itemprop="url">高性能MySQL读书笔记(四)</a>
               
             
           </h1>
@@ -374,24 +374,12 @@
                 
               
 
-              <time title="创建时间：2020-03-01 21:12:10" itemprop="dateCreated datePublished" datetime="2020-03-01T21:12:10+08:00">2020-03-01</time>
+              <time title="创建时间：2020-03-01 21:12:10 / 修改时间：22:48:01" itemprop="dateCreated datePublished" datetime="2020-03-01T21:12:10+08:00">2020-03-01</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-03-08 21:53:36" itemprop="dateModified" datetime="2020-03-08T21:53:36+08:00">2020-03-08</time>
               
             
           </span>
@@ -437,7 +425,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.2k</span>
+                <span title="本文字数">1.6k</span>
               
 
               
@@ -451,7 +439,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -473,85 +461,77 @@
       
         
           
-            <h1 id="查询性能优化-上"><a href="#查询性能优化-上" class="headerlink" title="查询性能优化(上)"></a>查询性能优化(上)</h1><h2 id="章节概述"><a href="#章节概述" class="headerlink" title="章节概述"></a>章节概述</h2><h3 id="本章主要内容"><a href="#本章主要内容" class="headerlink" title="本章主要内容"></a>本章主要内容</h3><ul>
-<li>发现查询效率不高时需要考虑的因素</li>
-<li>查询优化技巧</li>
-<li>MySQL优化机制<ul>
-<li>如何执行查询</li>
-<li>如何去改变查询的执行计划</li>
+            <h1 id="创建高性能索引-下"><a href="#创建高性能索引-下" class="headerlink" title="创建高性能索引(下)"></a>创建高性能索引(下)</h1><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><ul>
+<li>独立的列<ul>
+<li>索引列不能是表达式的一部分，也不能是函数的参数</li>
 </ul>
 </li>
-<li>MySQL优化器的不足，并探索查询优化的模式</li>
-</ul>
-<h3 id="主要目的"><a href="#主要目的" class="headerlink" title="主要目的"></a>主要目的</h3><p>深刻理解MySQL如何真正地执行查询，高效和低效的原因</p>
-<h2 id="为什么查询会慢"><a href="#为什么查询会慢" class="headerlink" title="为什么查询会慢"></a>为什么查询会慢</h2><p>异史氏曰：在查询的过程(生命周期)中，响应时间的变化导致查询变慢，具体到每个子任务操作的响应时间。</p>
-<h2 id="慢查询的基础-优化数据访问"><a href="#慢查询的基础-优化数据访问" class="headerlink" title="慢查询的基础:优化数据访问"></a>慢查询的基础:优化数据访问</h2><ul>
-<li>向数据库请求了不需要的数据</li>
-<li>扫描了额外的记录<ul>
-<li>指标介绍<ul>
-<li>响应时间<ul>
-<li>服务时间：数据库处理这个数据真正的花的时间</li>
-<li>排队时间：服务器等待资源执行子任务的时间</li>
+<li>前缀索引与索引的选择性<ul>
+<li>索引的选择性<ul>
+<li>不重复的索引值(也称为基数)和数据表的记录总数(#T)的比值，范围从1/#T到1之间,索引的选择性越高，查询效率越高</li>
 </ul>
 </li>
-<li>扫描的行数</li>
-<li>返回的行数</li>
+<li>前缀索引<ul>
+<li>足够长的前缀，保证其能代表唯一的索引，即前缀的基数接近于完整列的”基数”</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>查询大量行的数据行但只返回少数的行的优化技巧<ul>
-<li>使用索引覆盖扫描，把所有需要用到的列都放到索引中，这样存储引擎无需徽标获取对应行就可以返回结果</li>
-<li>改变库表结构</li>
-<li>重写这个复杂的查询</li>
+<li>索引列顺序<ul>
+<li>在不考虑排序和分组时,将选择性最高的列放到索引最前列</li>
+</ul>
+</li>
+<li>聚簇索引<ul>
+<li>聚簇索引并不是一种单独的索引类型，而是一种数据存储方式，具体的细节依赖与其实现方式，在InnoDB中保存了数据行和B-Tree索引</li>
+<li>当表有聚簇索引时，他的数据行实际上存放在索引的叶子页中</li>
+<li>聚簇表示数据行与相邻的键值紧凑地存储在一起</li>
+</ul>
+</li>
+<li>覆盖索引<ul>
+<li>一个索引包含所有需要查询的字段的值，其必须存储索引列的值。</li>
+<li>MySQL只能使用B-Tree索引做覆盖索引</li>
+<li>覆盖索引只能覆盖那些值访问索引中部分列的查询</li>
+</ul>
+</li>
+<li>重复与冗余<ul>
+<li>重复索引是指在相同的列上按照相同的顺序创建的相同类型的索引</li>
+<li>解决方法<ul>
+<li>使用shlomi Noach的common_schema中的一些视图来定位。</li>
+<li>使用Percona Toolkit中的pt-duplicate-keychecker</li>
 </ul>
 </li>
 </ul>
-<h2 id="重构查询的方式"><a href="#重构查询的方式" class="headerlink" title="重构查询的方式"></a>重构查询的方式</h2><ul>
-<li>选择正确的查询次数</li>
-<li>切分查询</li>
-<li>分解关联查询</li>
-</ul>
-<h2 id="查询执行的基础"><a href="#查询执行的基础" class="headerlink" title="查询执行的基础"></a>查询执行的基础</h2><ul>
-<li>一个MySQL请求的运行过程<ul>
-<li>客户端发送一条查询给服务器</li>
-<li>服务器线检查查询缓存，如果命中缓存，则直接返回缓存中的结果，否则，进入下一阶段</li>
-<li>服务器进行MySQL解析，预处理，再由优化器生成对应的执行计划</li>
-<li>MySQL根据优化器生成的执行计划，调用存储引擎API执行查询</li>
-<li>将结果返回给客户端</li>
+</li>
+<li>维护索引和表<ul>
+<li>找到并修复损坏的表</li>
+<li>维护准确的索引统计信息</li>
+<li>减少索引和数据的碎片<ul>
+<li>行碎片(InnoDB没有)<ul>
+<li>数据行被存储为多个地方的多个片段中  </li>
 </ul>
 </li>
-<li>MySQL查询状态<ul>
-<li>Command: SHOW FULLPROCESSLIST</li>
-<li>介绍<ul>
-<li>Sleep:线程正等待客户端发送新请求</li>
-<li>Query:线程正执行查询或正在将结果发送给客户端</li>
-<li>Locked:在MySQL服务器层，该线程再在等待表锁。</li>
-<li>Analyzing and statistics:线程正在收集存储引擎的统计信息，并生成查询执行计划</li>
-<li>Copying to tmp table [on disk]<ul>
-<li>线程正在执行查询，并且将其结果集都复制到一个临时表中。</li>
-<li>一般时GROUP BY操作，要么时文件排序操作，或者UNION操作</li>
+<li>行间碎片<ul>
+<li>逻辑上顺序的页，或者行在磁盘上不是顺序存储的。对全表扫描和聚簇索引操作影响较大  </li>
 </ul>
 </li>
-<li>Sorting result<ul>
-<li>线程正在对结果集进行排序</li>
+<li>剩余空间碎片<ul>
+<li>数据页中有大量的空余空间</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>MySQL能够处理的优化类型<ul>
-<li>重新定义表关联顺序</li>
-<li>将外连接转化为内连接</li>
-<li>使用等价变换规则</li>
-<li>优化COUNT(),MIN(),MAX()</li>
-<li>预估并转化为常数表达式</li>
-<li>覆盖索引扫描</li>
-<li>子查询优化</li>
-<li>提前终止查询</li>
-<li>等值传播</li>
-<li>列表IN()的比较</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>三大原则<ul>
+<li>单行访问很慢。最好读取的块中能包含尽可能多所需的行，使用索引可以创建位置引用以提升效率</li>
+<li>按顺序访问范围数据很快<ul>
+<li>顺序I/O不需要多次磁盘寻道</li>
+<li>如果服务器能按需顺序读取数据，那么就不需要多余的操作了</li>
+</ul>
+</li>
+<li>索引覆盖查询是很快的</li>
 </ul>
 </li>
 </ul>
