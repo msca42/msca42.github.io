@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="##">
+  <meta name="description" content="数据类型 Java的数据类型分为两种，一个是基本数据类型(值类型，内置数据类型)，一个是引用数据类型。  基本数据类型 Java在创建之初就引入了基本数据类型，目的是用来支持数值计算，因为基本数据类型可以在执行效率和内存使用两方面提升软件性能。 基本数据类型有四类八种，分别是整型，浮点型，布尔型和字符型。整型又分为byte,short，int,long四种，浮点型又分为float,double两种">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java概念盘点（二）">
 <meta property="og:url" content="http://http://msca42.site/2020/10/19/Java/Java基础(2)/index.html">
 <meta property="og:site_name" content="msca.blog">
-<meta property="og:description" content="##">
+<meta property="og:description" content="数据类型 Java的数据类型分为两种，一个是基本数据类型(值类型，内置数据类型)，一个是引用数据类型。  基本数据类型 Java在创建之初就引入了基本数据类型，目的是用来支持数值计算，因为基本数据类型可以在执行效率和内存使用两方面提升软件性能。 基本数据类型有四类八种，分别是整型，浮点型，布尔型和字符型。整型又分为byte,short，int,long四种，浮点型又分为float,double两种">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-19T09:08:51.366Z">
+<meta property="og:updated_time" content="2020-10-22T08:15:30.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java概念盘点（二）">
-<meta name="twitter:description" content="##">
+<meta name="twitter:description" content="数据类型 Java的数据类型分为两种，一个是基本数据类型(值类型，内置数据类型)，一个是引用数据类型。  基本数据类型 Java在创建之初就引入了基本数据类型，目的是用来支持数值计算，因为基本数据类型可以在执行效率和内存使用两方面提升软件性能。 基本数据类型有四类八种，分别是整型，浮点型，布尔型和字符型。整型又分为byte,short，int,long四种，浮点型又分为float,double两种">
 
 
 
@@ -372,12 +372,24 @@
                 
               
 
-              <time title="创建时间：2020-10-19 16:57:00 / 修改时间：17:08:51" itemprop="dateCreated datePublished" datetime="2020-10-19T16:57:00+08:00">2020-10-19</time>
+              <time title="创建时间：2020-10-19 16:57:00" itemprop="dateCreated datePublished" datetime="2020-10-19T16:57:00+08:00">2020-10-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-10-22 16:15:30" itemprop="dateModified" datetime="2020-10-22T16:15:30+08:00">2020-10-22</time>
               
             
           </span>
@@ -405,7 +417,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">11</span>
+                <span title="本文字数">2.2k</span>
               
 
               
@@ -419,7 +431,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -439,7 +451,29 @@
       
 
       
-        <p>## </p>
+        <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>Java的数据类型分为两种，一个是基本数据类型(值类型，内置数据类型)，一个是引用数据类型。</li>
+</ul>
+<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><ul>
+<li>Java在创建之初就引入了基本数据类型，目的是用来支持数值计算，因为基本数据类型可以在执行效率和内存使用两方面提升软件性能。</li>
+<li>基本数据类型有四类八种，分别是整型，浮点型，布尔型和字符型。整型又分为byte,short，int,long四种，浮点型又分为float,double两种，布尔型为boolean,字符型为char。</li>
+<li>当我们谈论基本数据类型的时候，我们会从这几个方面去说:应用场景，取值范围(值域)，创建时间，创建空间，类型转换。下面我们一个一个来说。</li>
+<li><p>首先对于数据类型，它的应用场景在于修饰变量。那么创建时间与创建空间也就是变量创建的时间与空间。变量在Java中可以分为这样几类:类变量，实例变量，局部变量。</p>
+<ul>
+<li><p><strong>类变量</strong>:独立于方法之外的变量，用static修饰，存放在方法区中，属于共享变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span>  <span class="keyword">boolean</span> Class = <span class="keyword">true</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>实例变量</strong>:独立于方法之外的变量，没有static修饰，存放在堆中，通过GC回收，属于对象的成员变量，根据访问控制符的不同进行设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> age =<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>局部变量</strong>:类的方法中的变量，声明在方法，构造方法或者语句块中，没有默认值，需要手动初始化,在栈中生成消失</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// age没有初始化，所以这里会报错</span></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    System.out.println(age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>依据赋值给不同类型的变量，基本数据类型的应用场景也限于类，实例和局部这三部分。众所周知，物理层传输的是bit(比特)流，8bit相当于1byte(字节),硬盘中的存储单位为byte。在Java中数据的运算是通过补码进行计算的。</p>
+</li>
+</ul>
 
       
     </div>
@@ -496,6 +530,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/19/Spring/spring基础/" rel="prev" title="Spring盘点（一）">
+                Spring盘点（一） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -574,8 +612,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -592,7 +639,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -700,6 +747,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">基本数据类型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -726,7 +790,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">8k</span>
+    <span title="站点总字数">9k</span>
   
 
   
@@ -735,7 +799,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7 分钟</span>
+    <span title="站点阅读时长">8 分钟</span>
   
 </div>
 
