@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="msca.blog">
 <meta property="og:description" content="数据类型 Java的数据类型分为两种，一个是基本数据类型(值类型，内置数据类型)，一个是引用数据类型。  基本数据类型 Java在创建之初就引入了基本数据类型，目的是用来支持数值计算，因为基本数据类型可以在执行效率和内存使用两方面提升软件性能。 基本数据类型有四类八种，分别是整型，浮点型，布尔型和字符型。整型又分为byte,short，int,long四种，浮点型又分为float,double两种">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-22T08:15:30.218Z">
+<meta property="og:updated_time" content="2020-10-23T12:18:34.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java概念盘点（二）">
 <meta name="twitter:description" content="数据类型 Java的数据类型分为两种，一个是基本数据类型(值类型，内置数据类型)，一个是引用数据类型。  基本数据类型 Java在创建之初就引入了基本数据类型，目的是用来支持数值计算，因为基本数据类型可以在执行效率和内存使用两方面提升软件性能。 基本数据类型有四类八种，分别是整型，浮点型，布尔型和字符型。整型又分为byte,short，int,long四种，浮点型又分为float,double两种">
@@ -389,7 +389,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-10-22 16:15:30" itemprop="dateModified" datetime="2020-10-22T16:15:30+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-23 20:18:34" itemprop="dateModified" datetime="2020-10-23T20:18:34+08:00">2020-10-23</time>
               
             
           </span>
@@ -417,7 +417,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.2k</span>
+                <span title="本文字数">2.7k</span>
               
 
               
@@ -471,7 +471,15 @@
 </li>
 </ul>
 </li>
-<li><p>依据赋值给不同类型的变量，基本数据类型的应用场景也限于类，实例和局部这三部分。众所周知，物理层传输的是bit(比特)流，8bit相当于1byte(字节),硬盘中的存储单位为byte。在Java中数据的运算是通过补码进行计算的。</p>
+<li><p>Java基本数据类型存储在什么地方？</p>
+<ul>
+<li>Java的基本数据类型都在栈中，存在于堆重点为基本数据类型自动装箱的包装类<h4 id="从byte到整型的取值范围"><a href="#从byte到整型的取值范围" class="headerlink" title="从byte到整型的取值范围"></a>从byte到整型的取值范围</h4></li>
+</ul>
+</li>
+<li>依据赋值给不同类型的变量，基本数据类型的应用场景也限于类，实例和局部这三部分。众所周知，物理层传输的是bit(比特)流，8bit相当于1byte(字节),硬盘中的存储单位为byte。在Java中数据的运算是通过补码进行计算的。</li>
+<li>具体说明：<ul>
+<li>首先2的8次方为256，即byte的取值范围为正负256之间，由于0的存在，所以在-128—-127或者-127—-128；我们知道Java中所有正数都是有符号位的，8位符号位最大值为0111 1111 为127，1111 1111为-127；现在假设byte占用9位而不是8位，那么如何表示+(-)128呢？ 0000 1000 0000 为128； 0001 1000 0000为-128；正数的补码为其本身，负数的补码运算先将原码符号位不变，其余取反，然后在其(反码)基础之上+1；即0001 0111 1111 + 1 也就是0001 1000 0000 与其原码相同。所以计算机就取1000 0000 <strong>-0为-128</strong>；</li>
+</ul>
 </li>
 </ul>
 
@@ -639,40 +647,14 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
 
               
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                    <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
 
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                    <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
               
             </nav>
           
@@ -757,7 +739,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">基本数据类型</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从byte到整型的取值范围"><span class="nav-number">1.1.1.</span> <span class="nav-text">从byte到整型的取值范围</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -790,7 +772,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">9k</span>
+    <span title="站点总字数">10k</span>
   
 
   
@@ -799,7 +781,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8 分钟</span>
+    <span title="站点阅读时长">9 分钟</span>
   
 </div>
 

@@ -96,24 +96,24 @@
 
 
 
-  <meta name="description" content="优化篇 范式  键的分类 超键:能唯一标识元组的属性集 候选键: 如果超键不包含多余的属性，那么这个超键就是候选键 主键: 用户可以从候选键中选择一个作为主键 外键: 如果数据表中某个属性集不是其主键，而是另一个数据表的主键，那么这个属性集就是这个数据表的外键 主属性:包含在任意候选键中的属性 非主属性: 不包含在任意候选键中的属性   范式分类 1NF: 数据库表中任意属性都是原子性的，不可再分">
+  <meta name="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库概念盘点（二）">
-<meta property="og:url" content="http://http://msca42.site/2020/10/19/数据库/数据库(2)/index.html">
+<meta property="og:title" content="《linxu就该这么学》复习笔记">
+<meta property="og:url" content="http://http://msca42.site/2020/10/23/Linux/linux就该这么学/index.html">
 <meta property="og:site_name" content="msca.blog">
-<meta property="og:description" content="优化篇 范式  键的分类 超键:能唯一标识元组的属性集 候选键: 如果超键不包含多余的属性，那么这个超键就是候选键 主键: 用户可以从候选键中选择一个作为主键 外键: 如果数据表中某个属性集不是其主键，而是另一个数据表的主键，那么这个属性集就是这个数据表的外键 主属性:包含在任意候选键中的属性 非主属性: 不包含在任意候选键中的属性   范式分类 1NF: 数据库表中任意属性都是原子性的，不可再分">
+<meta property="og:description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-18T18:08:46.227Z">
+<meta property="og:updated_time" content="2020-10-22T18:04:29.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库概念盘点（二）">
-<meta name="twitter:description" content="优化篇 范式  键的分类 超键:能唯一标识元组的属性集 候选键: 如果超键不包含多余的属性，那么这个超键就是候选键 主键: 用户可以从候选键中选择一个作为主键 外键: 如果数据表中某个属性集不是其主键，而是另一个数据表的主键，那么这个属性集就是这个数据表的外键 主属性:包含在任意候选键中的属性 非主属性: 不包含在任意候选键中的属性   范式分类 1NF: 数据库表中任意属性都是原子性的，不可再分">
+<meta name="twitter:title" content="《linxu就该这么学》复习笔记">
+<meta name="twitter:description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
 
 
 
 
 
 
-  <link rel="canonical" href="http://http://msca42.site/2020/10/19/数据库/数据库(2)/">
+  <link rel="canonical" href="http://http://msca42.site/2020/10/23/Linux/linux就该这么学/">
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>数据库概念盘点（二） | msca.blog</title>
+  <title>《linxu就该这么学》复习笔记 | msca.blog</title>
   
 
 
@@ -329,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/10/19/数据库/数据库(2)/">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2020/10/23/Linux/linux就该这么学/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="msca">
@@ -346,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据库概念盘点（二）
+          <h1 class="post-title" itemprop="name headline">《linxu就该这么学》复习笔记
 
               
             
@@ -372,7 +372,7 @@
                 
               
 
-              <time title="创建时间：2020-10-19 00:07:20 / 修改时间：02:08:46" itemprop="dateCreated datePublished" datetime="2020-10-19T00:07:20+08:00">2020-10-19</time>
+              <time title="创建时间：2020-10-23 08:23:00 / 修改时间：02:04:29" itemprop="dateCreated datePublished" datetime="2020-10-23T08:23:00+08:00">2020-10-23</time>
             
 
             
@@ -405,7 +405,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">700</span>
+                <span title="本文字数">0</span>
               
 
               
@@ -439,41 +439,7 @@
       
 
       
-        <h2 id="优化篇"><a href="#优化篇" class="headerlink" title="优化篇"></a>优化篇</h2><ul>
-<li><p>范式</p>
-<ul>
-<li>键的分类<ul>
-<li>超键:能唯一标识元组的属性集</li>
-<li>候选键: 如果超键不包含多余的属性，那么这个超键就是候选键</li>
-<li>主键: 用户可以从候选键中选择一个作为主键</li>
-<li>外键: 如果数据表中某个属性集不是其主键，而是另一个数据表的主键，那么这个属性集就是这个数据表的外键</li>
-<li>主属性:包含在任意候选键中的属性</li>
-<li>非主属性: 不包含在任意候选键中的属性</li>
-</ul>
-</li>
-<li>范式分类<ul>
-<li>1NF: 数据库表中任意属性都是原子性的，不可再分。</li>
-<li>2NF: 数据表李的非主属性要和这个数据表的候选键有完全依赖关系</li>
-<li>3NF: 对于任何非主属性都不传递依赖于候选键</li>
-<li>BCNF: 消除主属性对候选键的部分依赖或者传递依赖关系</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>索引</p>
-<ul>
-<li>帮助数据库管理系统高效获取数据的数据结构</li>
-<li>分类<ul>
-<li>普通索引:没有约束，提高效率</li>
-<li>唯一索引:数据唯一性约束，多个唯一性索引</li>
-<li>主键索引:在唯一性索引基础上不为空</li>
-<li>全文索引</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+        
       
     </div>
 
@@ -520,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/10/15/数据库/数据库(1)/" rel="next" title="数据库概念盘点（一）">
-                <i class="fa fa-chevron-left"></i> 数据库概念盘点（一）
+              <a href="/2020/10/23/电商/backend/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -530,8 +496,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/10/19/Java/Java基础(1)/" rel="prev" title="Java概念盘点（一）">
-                Java概念盘点（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2020/10/23/Java/Java基础(4)/" rel="prev" title="Java概念盘点（四）">
+                Java概念盘点（四） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -611,17 +577,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -719,23 +676,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#优化篇"><span class="nav-number">1.</span> <span class="nav-text">优化篇</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
@@ -916,7 +856,7 @@
 <script>
   function renderGitment() {
     var gitment = new Gitment({
-      id: '1603037240000',
+      id: '1603412580000',
       owner: 'msca42',
       repo: 'msca42.github.io',
       
@@ -958,7 +898,7 @@
 <script>
   function renderGitment() {
     var gitment = new Gitment({
-      id: '1603037240000',
+      id: '1603412580000',
       owner: 'msca42',
       repo: 'msca42.github.io',
       
