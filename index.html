@@ -329,6 +329,212 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2021/06/02/Java/Java基础(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="msca">
+      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="msca.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/06/02/Java/Java基础(1)/" class="post-title-link" itemprop="url">Java基础(1)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-06-02 17:15:10 / 修改时间：17:15:47" itemprop="dateCreated datePublished" datetime="2021-06-02T17:15:10+08:00">2021-06-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>为什么要学习编程语言？<ul>
+<li>说这个问题之前，先讲讲我个人的一些背景。上大学前，十八线小城市，鼠目寸光，只知道盐城周边地区，不知扬泰，遑论江苏之外，懵懵懂懂，按照我父母的话来说就和算盘上的珠子一样，拨了才动，不拨不动。大学专业也是随机选的，直到过去的几个月中，才慢慢发现，大学专业是看待世界变化，人类衍化的最好角度。</li>
+<li>很显然，我大学并没有好好学习，甚至没有学习，大一下学期开始，允许带电脑之后，我玩了半年三国杀，大二开始玩剑网3，一直玩到现在。我观察世界的有色眼镜大多是从剑三这款游戏中来的。有意思的是，之后学习到的很多东西，都可以在其中找到导火线和落点。</li>
+<li>大学中，唯一做的一件事，大概就是不清楚自己能干什么的情况下，学了一门技术，期冀靠他能找到一份工作。不要说什么职业发展规划，个人知识体系的搭建，那个时候真的什么都不懂，之后就开始学习网络，然后考了一个CCIE证书，49076，这个数字大概要带进我的墓志铭里了。尽管考完证书，我依然对Cisco这类大公司没什么概念，对国内的企业和世界的变化也没什么认知。不像现在的大学生，大厂，中厂，二厂，小厂，厂厂入耳。我唯一的认识，大概就是既希望于一张证书找到一份工作？至于后来，我开始痛恨paper,尽管我依旧从中获益。</li>
+<li>我现在一直想我为什么没有多问问自己，我眼前的东西从何而来，通过什么样的流程到我面前，游戏如此，水如此，食物如此，乃至身体，意识亦是如此。我对游戏是软件做的这点，我可能毕业一两年之后，才有一个清晰的认识，尽管我大一C语言学的还可以。</li>
+<li>mmorpg游戏里又一个概念dps，如果知道软件和数值策划的人大概都清楚，就是通过一个公式计算实时计算玩家的属性和boss间防御的一个终值，追求dps的玩家，其中有一批人被尊称为数据党。我在玩剑三的时候，认识到一个dalao,有一次他的微博提到一本书《G·E·B》《哥德尔·埃舍尔·巴赫》，你们知道当一本书，每个字你都看的懂，但是连起来你就是没法看懂时候的尴尬吗？我第一次听说人工智能就是从这本书的网评上说的。</li>
+<li>唐诺说他的第一本启蒙书是《人类的故事》，对于我而言，《G·E·B》类似，不过好比给一个老教授一本计算机原理一样，对于固有世界观的打击也是巨大的，而且当时并没有什么进阶之阶梯，不知道自己如何去一步一步了解，进而达到可以尝试阅读的门槛。</li>
+<li>然而之后我再也没有碰过那一本书，生活的目的不是为了看懂一本书，而是对于你从没看到过的事物，你能否将之纳入自己的语言体系，而不是焦虑，紧张，不知所措。对于权威的服从，是你要知道哪些是需要扬弃的。</li>
+<li>《GEB》，人工智能，哲学，古典音乐，所有一切最终落脚点还是你这个个人。面对与日俱增的信息与现有体现之外的知识，如果从容自洽就显得尤为重要。知道自己需要的是什么，权威众多，用许倬云老先生的话，如何把全世界人走过的路当作自己走过的路，这是一个终极问题。</li>
+<li>为什么要学习编程语言就显而易见了，维特斯根坦说:”语言观决定世界观”，在一个信息化的时代，如何与更多的人交流，如何更好的通过便捷的方式认识世界，改变自己。如何更好的看清楚事物的本质，理清存在的陷阱，自洽的生活。这些都需要一个媒介，那就是编程语言所在的计算机体系。</li>
+<li>通常人们将工作分为三类，社会需要，你喜欢，你擅长。我觉得应该加上一类，你需要。欧洲中世纪教会大学有四个学院，法律，医学，神学，艺学(希腊)。一个人来到这个世界上是一张白纸，他的喜好是别人灌输的，他的擅长是别人训练的，社会需要不以他的意志为转移。而仅有他需要，可以是自己发自内心的，这关乎死亡与生存质量。</li>
+<li>一个人长时间骑马行走在丛莽地区，自然会渴望到达城市。他来到依西多拉，他梦中的城市，在梦中，他正值青春，而到达伊西多拉城时，他已年老。广场上有一堵墙，老人们倚坐在哪里看着过往的年轻人；他和这些老人并坐在一起。</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+	<div>
+	
+	</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2021/05/25/闲言碎语/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1202,6 +1408,212 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2021/04/15/Java/理想與存養/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="msca">
+      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="msca.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/04/15/Java/理想與存養/" class="post-title-link" itemprop="url">理想與存養</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-04-15 23:36:10" itemprop="dateCreated datePublished" datetime="2021-04-15T23:36:10+08:00">2021-04-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-06-02 17:14:51" itemprop="dateModified" datetime="2021-06-02T17:14:51+08:00">2021-06-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/晚學盲言/" itemprop="url" rel="index"><span itemprop="name">晚學盲言</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">793</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>晚學盲言為錢穆先生晚年口述之作，成一家之言，余嘗讀之，略作筆記以中華文化解心中焦慮。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>順理想與存養之關係，須先明白何謂存養，何謂理想。書中如是<br><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">靜非以忘我，乃以存我，一時視聽俱泯，思慮不起，一如混沌，然乃以養其一體之真而已；此之謂存養。</span><br></pre></td></tr></table></figure></p>
+<p>故存養與理想作何解？自然萬物初生即對物曰:生存；及至成人，與人交會，男女老幼，相聚群聚，即對人；人皆有其喜怒哀樂，此對心；此乃人生之三階段。<br>近時代之教育為知識爆炸時代，知識對物，視聽教學，無以以學歷輪人之德行。故待人成年，何以教人為人之道？道家有言:”因應”，儒家有言:”盡其在我”；故賓主相交，貴在各敬其禮，各司其職。<br>中華文化對時間認識之深刻，中庸曰:”悠久”，莊周名之:”倏忽”；應帝王曰:”南海之帝為倏，北海之帝為忽，中央之帝為混沌。”不加分別，斯為<strong>混沌</strong>；一加分別，即成<strong>倏忽</strong>；倏忽積而為悠久，悠久實即是倏忽。</p>
+<p><strong></strong></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+	<div>
+	
+	</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1246,7 +1658,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1265,7 +1677,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1284,7 +1698,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -1388,7 +1804,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">5k</span>
+    <span title="站点总字数">7k</span>
   
 
   
@@ -1397,7 +1813,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5 分钟</span>
+    <span title="站点阅读时长">6 分钟</span>
   
 </div>
 
