@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="问题描述 markdown同页面如何进行链接跳转  解决方案 markdown添加html元素使用元素的锚属性  示例 单项  12正文&amp;lt;sup&amp;gt;&amp;lt;a name=&quot;jump1&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/sup&amp;gt;[1](#jump1)引用单项  双向  12正文&amp;lt;a  name=&quot;jump1&quot;&amp;gt;1(#jump2)&amp;lt;/a&amp;gt;&amp;lt;a nam">
+  <meta name="description" content="问题描述 markdown同页面如何进行链接跳转  解决方案 markdown添加html元素使用元素的锚属性  示例 单项  12正文&amp;lt;sup&amp;gt;&amp;lt;a name=&quot;jump1&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/sup&amp;gt;[1](#jump1)引用单项  双向  12正文&amp;lt;a href=&quot;#jump2&quot; name=&quot;jump1&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;">
 <meta name="keywords" content="日常问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="html锚在markdown中的应用">
 <meta property="og:url" content="http://http://msca42.site/2021/06/20/日常遇到的问题/html锚/index.html">
 <meta property="og:site_name" content="msca.blog">
-<meta property="og:description" content="问题描述 markdown同页面如何进行链接跳转  解决方案 markdown添加html元素使用元素的锚属性  示例 单项  12正文&amp;lt;sup&amp;gt;&amp;lt;a name=&quot;jump1&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/sup&amp;gt;[1](#jump1)引用单项  双向  12正文&amp;lt;a  name=&quot;jump1&quot;&amp;gt;1(#jump2)&amp;lt;/a&amp;gt;&amp;lt;a nam">
+<meta property="og:description" content="问题描述 markdown同页面如何进行链接跳转  解决方案 markdown添加html元素使用元素的锚属性  示例 单项  12正文&amp;lt;sup&amp;gt;&amp;lt;a name=&quot;jump1&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/sup&amp;gt;[1](#jump1)引用单项  双向  12正文&amp;lt;a href=&quot;#jump2&quot; name=&quot;jump1&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-06-20T12:16:24.465Z">
+<meta property="og:updated_time" content="2021-06-20T12:31:27.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html锚在markdown中的应用">
-<meta name="twitter:description" content="问题描述 markdown同页面如何进行链接跳转  解决方案 markdown添加html元素使用元素的锚属性  示例 单项  12正文&amp;lt;sup&amp;gt;&amp;lt;a name=&quot;jump1&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/sup&amp;gt;[1](#jump1)引用单项  双向  12正文&amp;lt;a  name=&quot;jump1&quot;&amp;gt;1(#jump2)&amp;lt;/a&amp;gt;&amp;lt;a nam">
+<meta name="twitter:description" content="问题描述 markdown同页面如何进行链接跳转  解决方案 markdown添加html元素使用元素的锚属性  示例 单项  12正文&amp;lt;sup&amp;gt;&amp;lt;a name=&quot;jump1&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/sup&amp;gt;[1](#jump1)引用单项  双向  12正文&amp;lt;a href=&quot;#jump2&quot; name=&quot;jump1&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;">
 
 
 
@@ -373,7 +373,7 @@
                 
               
 
-              <time title="创建时间：2021-06-20 05:44:10 / 修改时间：20:16:24" itemprop="dateCreated datePublished" datetime="2021-06-20T05:44:10+08:00">2021-06-20</time>
+              <time title="创建时间：2021-06-20 05:44:10 / 修改时间：20:31:27" itemprop="dateCreated datePublished" datetime="2021-06-20T05:44:10+08:00">2021-06-20</time>
             
 
             
@@ -424,7 +424,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.6k</span>
+                <span title="本文字数">1.7k</span>
               
 
               
@@ -438,7 +438,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -471,7 +471,8 @@
 <ul>
 <li>双向</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">正文<span class="tag">&lt;<span class="name">a</span>  <span class="attr">name</span>=<span class="string">"jump1"</span>&gt;</span>1(#jump2)<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">"jump2"</span>&gt;</span>[1](#jump1)<span class="tag">&lt;/<span class="name">a</span>&gt;</span>:引用双向</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">正文<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#jump2"</span> <span class="attr">name</span>=<span class="string">"jump1"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#jump1"</span> <span class="attr">name</span>=<span class="string">"jump2"</span>&gt;</span>[1]<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
 
