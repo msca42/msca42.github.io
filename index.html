@@ -1184,238 +1184,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2021/06/04/Java/Java基础(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="msca">
-      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="msca.blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/06/04/Java/Java基础(1)/" class="post-title-link" itemprop="url">Java基础(1)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-06-04 17:50:10" itemprop="dateCreated datePublished" datetime="2021-06-04T17:50:10+08:00">2021-06-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-06-09 18:42:34" itemprop="dateModified" datetime="2021-06-09T18:42:34+08:00">2021-06-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.8k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>编程语言首先是运行在计算机系统上的一种人与计算机交流的工具。那么如何将人类现实种的问题编程计算机能够理解的语言就是我们需要做的。这一过程叫做抽象；</li>
-<li>例子: 汇编语言是对底层机器的抽象，C是对汇编的抽象。</li>
-<li>OOP所做的就是从现实问题出发，将现实问题变成一个个的对象模型。通过对对象的操作，来进行对话。</li>
-<li>如何在“问题空间”（问题实际存在的地方）的元素与“方案空间”（对实际问题进行建模的地方，如计算机）的元素之间建立理想的“一对一”的映射关系？</li>
-<li>面向对象编程设计方法<ul>
-<li>万物皆对象</li>
-<li>程序是一组对象，通过消息传递来告知彼此该做什么</li>
-<li>每个对象都有自己的存储空间，可容纳其他对象</li>
-<li>每个对象都有一种类型</li>
-<li>同一类所有对象都能接受相同消息</li>
-</ul>
-</li>
-<li>我们把所有问题模型抽象成对象模型。<ul>
-<li>问题模型中有不同的事物，事物有不同的属性和行为。</li>
-<li>问题模型中的事物就对应不同的对象；对象就存在自己的属性和行为，并且不同的事物代表不同的类型。</li>
-<li>不同事物之间的交流行为对应对象之间的交流，这就需要一个媒介告知对象，这个媒介就是消息。</li>
-<li>不同对象之间的关系，包含，重叠，交叉。对应的就是组合，聚合，关联，依赖。所谓组合，就是整体的不可缺少部分，聚合就是整体中可以缺少部分。</li>
-<li>如果是包含关系，消息的传递是点对点，还是点对多点。传递消息和接受消息的基本单位是对象，那么相同类型的对象接受到信息的点就是一样的。</li>
-</ul>
-</li>
-<li>对象(Grady Booch): 一个对象具有自己的状态，行为和标识。这意味这对象有自己的内部数据（提供状态），方法（产生行为），并彼此区分（每个对象在内存中都有唯一的地址）。</li>
-<li>对象是对现实问题的抽象，现实问题中存在不同的事物，生物学中才用界门纲目科属种的不同类型来区分生物，同样，在计算机中模拟的对象也具有不同的类。类是对象的高度概括，通过类，我们才能知道对象，产生对象。</li>
-<li>对象之间通过消息来进行交流，那么消息是如何定义的？以及请求是如何发生的。在Java中我们借助了接口来定义对象发出的请求。接口的类行为的标准模板，类是接口的实现方式。类中的行为受到接口的影响，并通过类的对象进行调用。</li>
-<li>访问控制：public ,private,protected,default</li>
-<li>当我们拥有一个类的时候，如果此时出现了一个类似的需求，不过更加的细微，我们这时候就可以采取继承的方法。通过继承创建派生类。也就是说当基类无法满足需求的时候，此时基类就是一个框架，我们添加新的行为来满足我们更加精细化的需求，也就是纯粹替换和扩展替换，用范式表达就是里氏替换原则。</li>
-<li>什么是多态，程序不知道接受的是什么类型，但能够执行正确的形式就称为多态。在非OOP中，才用早期绑定，编译器生成绝对函数名的调用，然后将该调用地址解析为代码的绝对地址。而在OOP中，才用后期绑定，被调用代码直到运行时才确定，编译器确保方法存在，并对参数和返回值执行类型检查。</li>
-<li>参数化类型机制，也即是泛型产生的原因，是因为在此之前，在集合中存储的都是object类型，这里有两个概念要提及。当我们对某个派生类使用多态时，我们清楚的直到它的父类是object,这叫做向上转型，而当我们想要将object类型中转化为具体类型时，这就出现了安全问题，这叫做向下转型。我们不清楚我们需要转化的具体类型是什么？这样做会导致运行时异常。</li>
-<li>在谈论对象的生命周期之前，有必要概述下计算机的硬件基础。首先，我们直到计算机主要是通过输入设备，输出设备，系统单元和外部存储装置。具体而言，外在的有键盘鼠标，显示器，电源等，内在的有主板，内存，硬盘，cpu,显卡，网卡等。cpu是计算机的主脑，负责连接统筹其他所有装置，它与其他设备连接主要通过南桥北桥，由于技术进步，所有北桥被集成在cpu中。北桥主要连接内存等快速设备，南桥主要连接硬盘等慢速设备。cpu中主要包含两个部分，算数逻辑单元和控制单元以及多级缓存。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-	<div>
-	
-	</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2021/06/02/生活/编程的故事/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1678,7 +1446,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2021-06-02 17:18:47" itemprop="dateModified" datetime="2021-06-02T17:18:47+08:00">2021-06-02</time>
+                <time title="修改时间：2021-06-25 17:42:02" itemprop="dateModified" datetime="2021-06-25T17:42:02+08:00">2021-06-25</time>
               
             
           </span>
@@ -1706,7 +1474,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.6k</span>
+                <span title="本文字数">5.6k</span>
               
 
               
@@ -1720,7 +1488,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -1779,6 +1547,17 @@
 <li>剑网3目前看来本质上已经不是一个pve或者pvp游戏了，所以借壳生蛋的壳没那么重要。主流的pve和pvp玩家边缘化，玩家要么专业化如尘逸，要么娱乐化如大众，处在中间层次的玩家“高不成低不就”。所有人都处在一个极小范围的圈子中，不是以个人而是以圈子的角度去面对游戏内的所有问题。</li>
 <li>我们能从地图，从地理上了解到什么，山河湖海，气候变迁，还是风土人情。我们一方面在面对自己的内心，一方面在面对世界，但是这个世界包含什么。我们的大学源自苏联，教育思维来源于西方，但是世界之大，能够独自关心的不过是逃离北上广，在二线城市立足。世界什么样，和我有什么关系。我的世界仿佛只有中国，美国，以及历史上的二战的欧洲和第三世界。世界的变化，似乎与我无关。如此远大的世界，立足点却不是一个个活生生的活在当下的人，而是切格瓦拉，是甘地（英拉），是日常马奇诺（1/1）。不清楚他们现在吃什么，甚至不清楚自己现在应该吃什么，穿衣服的材质，茫茫然一混账。</li>
 <li>我辞职的原因原本是对于未来不清晰的认识，网络是基建，但是是否适合我，我想成为一个什么样的人，我不想成为一个什么样的人，后者可以说出很多，我不想成为一个工具，我想成为一个人，仅此而已。那么如何成为一个人，而不是一种指标性的工具，就要从你是谁开始，从什么构成了你。你过往的经历，知识，构成了现在的你，你目前的经历，学习经验构成了未来的你。你的生活方式，认知水平决定了你是一个什么样的人，你看世界的角度决定你思考的深度。</li>
+<li>认识世界的角度，从单一个体到整体的过程，也是机械论到系统论的过程。</li>
+<li>对于事件的解读只能依靠仅有的信息，所以一切推论都是不正确的，乃至说，掌握了部分信息之后，推论虽然是有所偏移，但依然不全面。甚至，同一件故事，不同的视角下，善恶都没有那么清晰。能够做到的落脚点只是个体的行为，以及行为背后的逻辑。在不断的理论加持下，一点一点不断的改善。</li>
+<li>如何解决bug? 将bug内容粘贴到百度，谷歌上，不求甚解，完全黑盒，黑灯瞎火的随意配置，要不就重写卸载，重新来过，这样做不太行。</li>
+<li>将你一天的生活肢解，有多少经过思考的生活方式，知识的总量不变，失去的是活着的热情。这时走与那时走看到的风景有何不同？</li>
+<li>离开计量谈毒性都是不靠谱的，我们所看到的数据也是一样，没有真正的随机人群。</li>
+<li>《实习医生格蕾》里盒中心脏是一个很好的标准模型，之于时间，生命，价值，个人意义。</li>
+<li>所有的资讯似乎都是导读类的内容，管中窥豹，只见一斑。</li>
+<li>年轻人之间的比较，实际上比较的就是容错率，有的人靠祖辈萌阴的低保就可以超越绝大多数人，有的人却没人任何选择的机会，退一步便是生或死。以至于，大多数人现在努力也不过是在在造梦，造一个可以给自己的后代一个更高容错率的梦。而实际上，较之祖辈其实差不多。这样就产生了一个问题，为了一个虚无缥缈的人这么做值得吗？给予生命，养而不教，自己对于世界的认识停留在哪里？是否适合未来。放弃造梦，社会会把你和谁比较，同龄人还是过去的你自己。我们都知道一项新技术的诞生其实源于一些旧有技术的成熟，也就是所谓东风徐来。没有任何一项新技术是空中阁楼，我们是选择做EJB还是做spring，是选择CGI还是Servlet。物质繁荣的背后，那些横亘在心头的古老问题，当再次拾掇起来，是否能解释的清。</li>
+<li>像sb一样的坚持，如果你能做一件事做10年，那么你就会坦然面对很多事情。</li>
+<li>有种感觉，越无知越弱势越高傲，仿佛别人一辈子的努力，几句话就可以完全无视，还广受好评</li>
+<li>所谓拓荒，在一片荒草地上跑马圈地，划分边界职能，挖除杂草，引入水流，变化阡陌，一步一步。然而如果辨别原先生长在上面的生态是是否有利用价值，是否可以因地制宜，在大多数时候，是不清楚的，只能一棍子打死，打扫干净屋子在请客。</li>
 </ul>
 
           
@@ -2334,7 +2113,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2357,9 +2136,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2382,9 +2159,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -2488,7 +2263,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">11k</span>
+    <span title="站点总字数">10k</span>
   
 
   
@@ -2497,7 +2272,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">10 分钟</span>
+    <span title="站点阅读时长">9 分钟</span>
   
 </div>
 
