@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="主要内容： 以一个hello.c的程序为起点，通过介绍它的整个生命周期，来逐步认识系统中各种软硬件概念  12345678/* hello.c */#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;	printf(&quot;hello,world\n&quot;);	return 0;&amp;#125; 信息 上面的源程序保存在通常保存在硬盘中，以hello.c的源代码文件形式展现给我们。">
+<meta name="keywords" content="CSAPP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机系统漫游">
+<meta property="og:url" content="http://http://msca42.site/2021/07/11/计算机基础/CSAPP/计算机系统漫游/index.html">
+<meta property="og:site_name" content="msca.blog">
+<meta property="og:description" content="主要内容： 以一个hello.c的程序为起点，通过介绍它的整个生命周期，来逐步认识系统中各种软硬件概念  12345678/* hello.c */#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;	printf(&quot;hello,world\n&quot;);	return 0;&amp;#125; 信息 上面的源程序保存在通常保存在硬盘中，以hello.c的源代码文件形式展现给我们。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-07-11T12:28:07.084Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机系统漫游">
+<meta name="twitter:description" content="主要内容： 以一个hello.c的程序为起点，通过介绍它的整个生命周期，来逐步认识系统中各种软硬件概念  12345678/* hello.c */#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;	printf(&quot;hello,world\n&quot;);	return 0;&amp;#125; 信息 上面的源程序保存在通常保存在硬盘中，以hello.c的源代码文件形式展现给我们。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://http://msca42.site/2021/07/11/计算机基础/CSAPP/计算机系统漫游/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>计算机系统漫游 | msca.blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">msca.blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+
+    
+
+    <a href="/" rel="section">首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+
+    
+
+    <a href="/about/" rel="section">关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+
+    
+
+    <a href="/tags" rel="section">标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+
+    
+
+    <a href="/categories/" rel="section">分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+
+    
+
+    <a href="/archives/" rel="section">归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2021/07/11/计算机基础/CSAPP/计算机系统漫游/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="msca">
+      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="msca.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机系统漫游
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-07-11 20:28:29 / 修改时间：20:28:07" itemprop="dateCreated datePublished" datetime="2021-07-11T20:28:29+08:00">2021-07-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">9.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">9 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="主要内容："><a href="#主要内容：" class="headerlink" title="主要内容："></a>主要内容：</h2><ul>
+<li>以一个hello.c的程序为起点，通过介绍它的整个生命周期，来逐步认识系统中各种软硬件概念</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* hello.c */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"hello,world\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="信息"><a href="#信息" class="headerlink" title="信息"></a>信息</h2><ul>
+<li>上面的源程序保存在通常保存在硬盘中，以hello.c的源代码文件形式展现给我们。</li>
+<li>但是文件属于操作系统的抽象，对于计算机硬件来说，hello.c的源代码本质上是值0和1组成的位(比特/bit)序列。比特之上是字节，一个字节相当于8个比特位。每个文本字符相当于程序中的某些文本字符。</li>
+<li>例子说明: 上述一段话主要讲了<strong>三者的关系</strong>，这三者分别是<ul>
+<li>源代码中的<strong>字符</strong></li>
+<li>硬盘的基本传输单位<strong>比特位</strong></li>
+<li>8个比特组成的<strong>字节</strong></li>
+<li>三者关系简而言之，我们编写的源代码中每个字符的计量单位是字节，字节在计算机中是8个比特位组成，比特以0和1的形式存储在硬件系统中，也是通过0和1的形式进行数据的传递。</li>
+</ul>
+</li>
+<li>ASCII（American Standard Code for Information Interchange）美国信息交换标准代码，这个标准主要是用来映射我们日常使用的字符的，诸如二十六个大小写字母，常见的符号等，将它们映射为标准的二进制。<ul>
+<li>映射方式，我们知道一个字节相当于8个比特位，那么用8个比特位表示一个字符也是可以的，8个比特位从低到高可以表示0000 0000 到0111 1111 的127个字符</li>
+<li>也就是说hello.c文件中每个字符都可以使用一个字节（8个比特位）表示，也就是hello.c文件是一个字节序列。</li>
+</ul>
+</li>
+<li>文本文件与二进制文件<ul>
+<li>文本文件只由ASCII字符构成</li>
+<li>所有其他文件都是二进制文件</li>
+</ul>
+</li>
+<li><strong>总结</strong><ul>
+<li>这一小节主要讲述了信息在计算机中的存储形式，最小的是0，1表示的二进制，每对0，1表示一比特位，8个比特位表示一个字节，源代码中的字符存储在一个或者多个字节上</li>
+</ul>
+</li>
+</ul>
+<h2 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h2><ul>
+<li>hello.c文件是面向程序员的高级语言编写的文件，程序员可以编写，阅读，修改；但是在计算机中运行时，hello.c就需要转换形式，从C编写的高级程序语言，变成低级的机器语言指令，然后将这些指令打包成一个<strong>可执行目标程序</strong>的格式，并以二进制磁盘文件的形式存储，这个过程是用过编译器驱动完成的</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; gcc -o hello hello.c </span><br><span class="line">// gcc或者cc是编译工具， -o 是重命名 hello是可执行程序 hello.c是源代码</span><br></pre></td></tr></table></figure>
+<ul>
+<li>整个编译过程分为以下几步<ul>
+<li>hello.c源文件 经过<strong>预处理</strong>器（#include &lt;stdio.h&gt;/cpp）</li>
+<li>预处理器修改了源程序，变成hello.i（文本）</li>
+<li>再经过<strong>编译</strong>器（ccl）,形成了hello.s（文本）</li>
+<li>hello.s是汇编程序，需要再经过<strong>汇编</strong>器（as）</li>
+<li>才能形成可重定位的目标程序hello.o（二进制）</li>
+<li>将hello.o和预编译好的函数合并<strong>链接</strong>成为hello</li>
+</ul>
+</li>
+<li><strong>总结</strong><ul>
+<li>这一小节主要阐释了源代码到可执行文件的转换过程，经过预处理，编译，汇编，链接最终形成了可以直接执行的文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="了解编译系统的工作的重要性"><a href="#了解编译系统的工作的重要性" class="headerlink" title="了解编译系统的工作的重要性"></a>了解编译系统的工作的重要性</h2><ul>
+<li>作为一个程序员，有必要知道编译系统是如何工作的，这样可以帮助我们更好的工作，以下是了解编译系统的好处<ul>
+<li>优化程序性能: 哪种方式更加高效</li>
+<li>理解链接时出现的错误</li>
+<li>避免安全漏洞</li>
+</ul>
+</li>
+</ul>
+<h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><ul>
+<li>源代码经过编译变成了计算机可以识别的机器指令，通过bash可以执行，那么了解编译后的代码是如何在计算机中运行的，最终为什么会在显示屏上输出信息。对于执行过程和编译过程的了解，可以使我们对于底层系统软硬件的运行机制理解更加深入。</li>
+<li>编译主要是操作系统层面的软件过程，是文件类型的一种转换，而执行，需要将编译后的文件加载到硬件层面，和方方面面的硬件交互。</li>
+</ul>
+<h3 id="系统的硬件组成"><a href="#系统的硬件组成" class="headerlink" title="系统的硬件组成"></a>系统的硬件组成</h3><ul>
+<li>在介绍硬件之前，先要明确一点，计算机硬件的传递介质的是0和1的比特流。往大了看，也可以成为字节流。那么传递的速率如何限定，每次传递多少字节，每秒传递多少次，输出端可以输出多少，输入端可以接受多少就成为限制计算机性能的因素。</li>
+<li>总线<ul>
+<li>总线是一组电子管道，负责连接各个硬件设备。总线上传递的数据是定长的字节块，也就是字。</li>
+<li>字中的字节数（字长）是一个基本的系统参数，目前主流的机器都是64位字长，也就是8个字节。</li>
+<li>也就是说，总线单单次位传递的字节数量是8字节（64位比特）。如果一个字节对应一个字符，那么总线单位单次传递8个字符。</li>
+</ul>
+</li>
+<li>主存<ul>
+<li>主存是区别与硬盘的临时存储设备，主要是一组动态随机存取存储器（DRAM)芯片组成</li>
+<li>逻辑上，主存是一个线性的字节数组，每个字节都有唯一的地址（数组索引）</li>
+</ul>
+</li>
+<li>处理器<ul>
+<li>解释（执行）存储在主存中的指令的引擎</li>
+<li>需要执行的指令来自远程序计数器（PC寄存器），大小是一个字，在任何时候都指向主存中的一条地址</li>
+<li>具体循环流程: 处理器从PC取指令，执行指令，更新PC指令，这个模型是通过<strong>指令集架构</strong>决定</li>
+<li>CPU中的设备主要有<ul>
+<li>通用寄存器</li>
+<li>专用寄存器</li>
+<li>ALU算术逻辑单元</li>
+</ul>
+</li>
+<li>寄存器是单个字长（依据机器特性），ALU计算新的数据和地址值</li>
+<li>CPU指令操作<ul>
+<li>加载<ul>
+<li>从主存复制一个字节或者一个字到寄存器，以覆盖寄存器原来的内容</li>
+</ul>
+</li>
+<li>存储<ul>
+<li>从寄存器复制一个字节或者字到主存的某个位置，以覆盖这个位置上原来的内容</li>
+</ul>
+</li>
+<li>操作<ul>
+<li>把两个寄存器的内容复制到ALU，ALU对这两个字做算术运算，并将结果存放到一个寄存器中，以覆盖该寄存器中原来的内容</li>
+</ul>
+</li>
+<li>跳转<ul>
+<li>从指令本身抽取一个字，并将这个字复制到程序计数器（PC）中，以覆盖PC中原来的值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>I/O 设备<ul>
+<li>I/O 设备是系统和外界的联系通道，常见的I/O设备有以下几种<ul>
+<li>用户输入的键盘，鼠标</li>
+<li>用户输出的显示器</li>
+<li>长期存储数据和程序的硬盘</li>
+</ul>
+</li>
+<li>在I/O 设备和I/O总线之间存在一个适配器（控制器），它决定设备的封装方式。<ul>
+<li>控制器是主板上的芯片组</li>
+<li>适配器是一块插在主板上的卡（显卡，网卡）</li>
+</ul>
+</li>
+<li>指令集架构与微体系结构的区别？<ul>
+<li>指令集架构描述的是每条机器代码指令的效果</li>
+<li>微体系结构描述的是处理器实际上如何实现的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>在了解了基本的硬件组成之后，我们开始看看hello.c的示例程序到底发生了什么？<ul>
+<li>前情提要，目前我们已经将hello.c文件通过预处理，将#include &lt;stdio.h&gt;类似的宏指令添加到其中，形成hello.i文件，然后通过编译，形成了汇编程序hello.s，然后经过汇编器，将汇编文件变成二进制的可执行文件hello.o，最后经过链接阶段，将hello.o和预处理函数结合，形成真正的可执行目标文件hello</li>
+<li>现在我们需要对hello进行bash执行，观察，说明其中的发展与变化<ul>
+<li>在shell界面，我们输入./hello的bash指令，shell程序将字符读入寄存器，再把它们放在内存中。</li>
+<li>敲击回车后，shell执行指令加载hello文件</li>
+<li>指令将hello目标文件的代码和数据从磁盘复制到内存中。</li>
+<li>处理器开始执行hello程序的main程序的机器指令</li>
+<li>将hello,world 字符串中的字节从内存中复制到寄存器文件</li>
+<li>再从寄存器文件复制到显示设备</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>总结</strong><ul>
+<li>本小节先从硬件设备入手，讲述了总线，I/O， 内存，CPU，然后讲述hello的在其中的执行过程</li>
+<li>重点以下几方面:<ul>
+<li>总线的传输速率，字（字长）是根据机器决定，现在普遍64位8字节</li>
+<li>CPU的pc的作用，alu的操作，其中alu操作可以这么记忆，cpu中除了alu只剩存储设备寄存器，那么首先输入（加载），移动（存储），输出（操作），下一条命令（跳转）</li>
+<li>hello的执行过程中需要注意的就是指令需要经过寄存器，本质上是指令和数据在不不同位置的转移，硬盘，内存，寄存器，总线</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="高速缓存与存储结构"><a href="#高速缓存与存储结构" class="headerlink" title="高速缓存与存储结构"></a>高速缓存与存储结构</h2><ul>
+<li>高速缓存存在的意义<ul>
+<li>内存和寄存器之间的传递损耗太大，用网络中的说法就是降低最后一公里的消耗</li>
+</ul>
+</li>
+<li>高速缓存分类<ul>
+<li>L1: 速度与寄存器相当，位于处理器芯片上</li>
+<li>L2: 通过一条总线连接到CPU核心</li>
+<li>L1,L2为核心单独缓存，L3为CPU共享缓存</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作系统的诞生"><a href="#操作系统的诞生" class="headerlink" title="操作系统的诞生"></a>操作系统的诞生</h2><ul>
+<li>为什么要有操作系统？<ul>
+<li>防止硬件被失控的应用程序滥用</li>
+<li>向应用程序提供简单一致的机制来控制复杂又通常大不相同的低级硬件设备</li>
+</ul>
+</li>
+<li>如何实现？<ul>
+<li>进程，虚拟内存，文件</li>
+<li>文件是对I/O设备的抽象</li>
+<li>虚拟内存是对内存和I/O设备的抽象</li>
+<li>进程是对处理器，内存和I/O设备的抽象</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
+<li>什么是进程？<ul>
+<li>进程是一种抽象表现，它的主体是程序，具体表现为数个程序共用一套硬件而不自知，每个程序都感觉自己在独占硬件平台。</li>
+<li>真实情况就是，不同进程的指令是交错执行，这样的行为可以称为<strong>并发运行</strong></li>
+<li>无论是单核还是多核系统，一个CPU看上去都像是在并发的执行多个进程，这时通过处理器在进程间切换来实现的，这种操作系统层面交错执行的机制称为<strong>上下文切换</strong>。</li>
+</ul>
+</li>
+<li>以单核处理器系统为例子说明<ul>
+<li>上下文是什么？<ul>
+<li>操作系统跟踪进程运行所需的状态信息，简而言之，就是一个进程可以称为一个进程的最基础信息</li>
+<li>这些信息的作用就是帮助操作系统还原进程，再现切换前的状态</li>
+</ul>
+</li>
+<li>以hello运行说明<ul>
+<li>两个进程shell，hello进程</li>
+<li>开始是shell进程运行，然后用户输入</li>
+<li>shell通过系统调用函数，执行bash命令</li>
+<li>系统调用将控制权传递给操作系统，保存上下文，运行hello程序</li>
+<li>恢复shell上下文，等待下一个输入</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>这里例子中的重点在于系统调用使得进程进行了切换，通过内核管理。<ul>
+<li>具体操作是系统调用是，将控制权从用户态传递给内核态，通过内核执行被请求的操作，然后返回用户态。</li>
+</ul>
+</li>
+</ul>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><ul>
+<li>我们为什么需要线程？<ul>
+<li>多进程的粒度太大，我们需要拆分单个进程，在进程上下文中搞事情，而不是在多进程，操作系统保存的多个进程上下文中。</li>
+</ul>
+</li>
+</ul>
+<h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><ul>
+<li>我们知道，进程是一种操作系统层面的抽象，将硬件隔离。虚拟内存使得进程之于硬件进一步隔离。</li>
+<li>通过虚拟地址空间，使得每个进程似乎都独占了内存。</li>
+<li>构成（从上往下）<ul>
+<li>内核虚拟内存（用户不可见）</li>
+<li>用户栈<ul>
+<li>运行时创建，编译器用它实现函数调用</li>
+<li>可以在程序执行期间动态地扩展和收缩（每调用一个函数就扩展，从一个函数返回就收缩）</li>
+</ul>
+</li>
+<li>共享库<ul>
+<li>存放标准库和数学库的共享代码和数据</li>
+</ul>
+</li>
+<li>运行时堆<ul>
+<li>代码和数据区在进程一开始运行时就被指定了大小</li>
+<li>可以动态扩展和收缩</li>
+</ul>
+</li>
+<li>程序代码和数据<ul>
+<li>对于所有进程来说，从同一固定地址开始，然后就是全局变量的位置</li>
+<li>以上这句话的意思是，进程要加载外部数据和代码的时候，需要从虚拟内存的固定位置开始，然后跳转到全局变量的位置，慢慢加载。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><ul>
+<li>文件是输入输出的抽象表达，本质上就是字节序列；</li>
+<li>实现方式也都是通过一组Unix I/O 的系统函数调用来读写的</li>
+</ul>
+<h2 id="操作系统总结"><a href="#操作系统总结" class="headerlink" title="操作系统总结"></a>操作系统总结</h2><ul>
+<li>软件层面不似硬件，所有都要以抽象概念理解，具体而言分为进程，虚拟内存，文件<ul>
+<li>文件是输入输出的抽象，用户看到的基本都是文件形式</li>
+<li>虚拟内存是内存和输入输出的抽象，通过虚拟内存地址空间，将数据和代码加载，存储，等待运行</li>
+<li>进程是处理器，内存和输入输出的抽象，通过进程，线程，让各个程序有序的在硬件层面运行</li>
+</ul>
+</li>
+</ul>
+<h2 id="重要概念阐述"><a href="#重要概念阐述" class="headerlink" title="重要概念阐述"></a>重要概念阐述</h2><h3 id="Amdahl定律"><a href="#Amdahl定律" class="headerlink" title="Amdahl定律"></a>Amdahl定律</h3><ul>
+<li>当我们对系统的某个部分加速时，其对系统整体性能取决于该部分的重要性和加速程度。</li>
+<li>也就是说如果想要显著加速整个系统，必须提升全系统中相当大的部分的速度</li>
+</ul>
+<h3 id="并行与并发"><a href="#并行与并发" class="headerlink" title="并行与并发"></a>并行与并发</h3><ul>
+<li>并发指的是一个同时具有多个活动的系统</li>
+<li>并行指的是用并发来使一个系统运行的更快</li>
+<li>由定义可知，并发主要修饰的系统，修饰语是同时和多个活动，而并行主要强调系统的运行速度。</li>
+<li>线程级并行<ul>
+<li>线程级并发主要在多核多线程架构上体现，硬件层面上，处理器包含一个统一共享的L3缓存，每个核心具有自己独立的L2，L1数据，L1指令缓存和寄存器。处理器包含多个核心。</li>
+<li>单核处理的功能主要是允许多用户同时与系统交互。</li>
+<li>超线程本质上是一个CPU指定多个控制流的过程，多核就代表多个CPU和更多的控制流。</li>
+</ul>
+</li>
+<li>指令级并行<ul>
+<li>处理器同时执行多个指令的属性，主要用到流水线模型</li>
+</ul>
+</li>
+<li>单指令，多数据并行<ul>
+<li>允许一条指令产生多个可以并行执行的操作，SIMD并行</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+	<div>
+	
+		﻿
+<div style="text-align:center;color: #ccc;font-size:14px;">
+------ 本文结束 ------</div>
+<br>
+<div style="border: 1px solid black">
+<div style="margin-left:10px">
+<span style="font-weight:blod">版权声明</span>
+<br>
+<p style="font-size: 10px;line-height: 30px"><a href="http://msca42.site/" style="color:#258FC6">msca's blog</a> by <a href="http://msca42.site/" style="color:#258FC6">Ding Shu Bo</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" style="color:#258FC6">Creative Commons BY-NC-ND 4.0 International License</a>.<br>
+由<a href="http://msca42.site/" style="color:#258FC6">丁书波</a>创作并维护的<a href="http://msca42.site/" style="color:#258FC6">msca's blog</a>博客采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" style="color:#258FC6">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a>。<br>
+本文首发于<a href="http://msca42.site/" style="color:#258FC6">msca's blog</a> 博客<a href="http://msca42.site/" style="color:#258FC6">http://msca42.site/</a> ，版权所有，侵权必究。</p>
+</div>
+</div>
+
+	
+	</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSAPP/" rel="tag"># CSAPP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/07/01/博尔赫斯/女海盗/" rel="next" title="女海盗郑寡妇">
+                <i class="fa fa-chevron-left"></i> 女海盗郑寡妇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+       
+         <div id="gitment-container"></div>
+       
+    </div>
+  
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      theme: myTheme,
+      owner: '',
+      repo: '',
+      oauth: {
+        client_id: '89a7384990192e9cf857',
+        client_secret: '404ed506ef6aa9b73fa3dfb0a5fb5fb3e140300a'
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="msca">
+            
+              <p class="site-author-name" itemprop="name">msca</p>
+              <p class="site-description motion-element" itemprop="description">丝竹响彻无忧宫，独倚斜阳一醉翁</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/msca42" title="GitHub &rarr; https://github.com/msca42" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:msca5238@gmail.com" title="E-Mail &rarr; mailto:msca5238@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://coolshell.cn/" title="https://coolshell.cn/" rel="noopener" target="_blank">酷壳</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.allhistory.com/" title="https://www.allhistory.com/" rel="noopener" target="_blank">全历史</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.gutenberg.org/" title="http://www.gutenberg.org/" rel="noopener" target="_blank">古登堡</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/blog/" title="http://www.ruanyifeng.com/blog/" rel="noopener" target="_blank">阮一峰的网络日志</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要内容："><span class="nav-number">1.</span> <span class="nav-text">主要内容：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息"><span class="nav-number">2.</span> <span class="nav-text">信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换"><span class="nav-number">3.</span> <span class="nav-text">转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解编译系统的工作的重要性"><span class="nav-number">4.</span> <span class="nav-text">了解编译系统的工作的重要性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行"><span class="nav-number">5.</span> <span class="nav-text">执行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统的硬件组成"><span class="nav-number">5.1.</span> <span class="nav-text">系统的硬件组成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高速缓存与存储结构"><span class="nav-number">6.</span> <span class="nav-text">高速缓存与存储结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的诞生"><span class="nav-number">7.</span> <span class="nav-text">操作系统的诞生</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程"><span class="nav-number">7.1.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程"><span class="nav-number">7.2.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟内存"><span class="nav-number">7.3.</span> <span class="nav-text">虚拟内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件"><span class="nav-number">7.4.</span> <span class="nav-text">文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统总结"><span class="nav-number">8.</span> <span class="nav-text">操作系统总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重要概念阐述"><span class="nav-number">9.</span> <span class="nav-text">重要概念阐述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Amdahl定律"><span class="nav-number">9.1.</span> <span class="nav-text">Amdahl定律</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并行与并发"><span class="nav-number">9.2.</span> <span class="nav-text">并行与并发</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </main></div>
+    
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">msca</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">18k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">16 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+    <!-- LOCAL: You can save these files to your site and update links -->
+
+  
+     <!-- <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script> -->
+<script src="https://billts.site/js/gitment.js"></script>
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/> -->
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<!-- END LOCAL -->
+
+<style>
+#gitment-container a {
+  border-bottom: none;
+}
+
+</style>
+
+<script>
+  function renderGitment() {
+    var gitment = new Gitment({
+      id: '1626006509000',
+      owner: 'msca42',
+      repo: 'msca42.github.io',
+      
+      oauth: {
+      
+      
+        client_secret: '404ed506ef6aa9b73fa3dfb0a5fb5fb3e140300a',
+      
+        client_id: '89a7384990192e9cf857'
+      }
+    });
+    gitment.render('gitment-container');
+  }
+
+  
+    renderGitment();
+  
+</script>
+
+  
+
+<!-- LOCAL: You can save these files to your site and update links -->
+
+  
+     <!-- <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script> -->
+<script src="https://billts.site/js/gitment.js"></script>
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/> -->
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<!-- END LOCAL -->
+
+<style>
+#gitment-container a {
+  border-bottom: none;
+}
+
+</style>
+
+<script>
+  function renderGitment() {
+    var gitment = new Gitment({
+      id: '1626006509000',
+      owner: 'msca42',
+      repo: 'msca42.github.io',
+      
+      oauth: {
+      
+      
+        client_secret: '404ed506ef6aa9b73fa3dfb0a5fb5fb3e140300a',
+      
+        client_id: '89a7384990192e9cf857'
+      }
+    });
+    gitment.render('gitment-container');
+  }
+
+  
+    renderGitment();
+  
+</script>
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

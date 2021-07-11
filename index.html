@@ -329,6 +329,451 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2021/07/11/计算机基础/CSAPP/计算机系统漫游/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="msca">
+      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="msca.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/07/11/计算机基础/CSAPP/计算机系统漫游/" class="post-title-link" itemprop="url">计算机系统漫游</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-07-11 20:28:29 / 修改时间：20:28:07" itemprop="dateCreated datePublished" datetime="2021-07-11T20:28:29+08:00">2021-07-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">9.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">9 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="主要内容："><a href="#主要内容：" class="headerlink" title="主要内容："></a>主要内容：</h2><ul>
+<li>以一个hello.c的程序为起点，通过介绍它的整个生命周期，来逐步认识系统中各种软硬件概念</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* hello.c */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"hello,world\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="信息"><a href="#信息" class="headerlink" title="信息"></a>信息</h2><ul>
+<li>上面的源程序保存在通常保存在硬盘中，以hello.c的源代码文件形式展现给我们。</li>
+<li>但是文件属于操作系统的抽象，对于计算机硬件来说，hello.c的源代码本质上是值0和1组成的位(比特/bit)序列。比特之上是字节，一个字节相当于8个比特位。每个文本字符相当于程序中的某些文本字符。</li>
+<li>例子说明: 上述一段话主要讲了<strong>三者的关系</strong>，这三者分别是<ul>
+<li>源代码中的<strong>字符</strong></li>
+<li>硬盘的基本传输单位<strong>比特位</strong></li>
+<li>8个比特组成的<strong>字节</strong></li>
+<li>三者关系简而言之，我们编写的源代码中每个字符的计量单位是字节，字节在计算机中是8个比特位组成，比特以0和1的形式存储在硬件系统中，也是通过0和1的形式进行数据的传递。</li>
+</ul>
+</li>
+<li>ASCII（American Standard Code for Information Interchange）美国信息交换标准代码，这个标准主要是用来映射我们日常使用的字符的，诸如二十六个大小写字母，常见的符号等，将它们映射为标准的二进制。<ul>
+<li>映射方式，我们知道一个字节相当于8个比特位，那么用8个比特位表示一个字符也是可以的，8个比特位从低到高可以表示0000 0000 到0111 1111 的127个字符</li>
+<li>也就是说hello.c文件中每个字符都可以使用一个字节（8个比特位）表示，也就是hello.c文件是一个字节序列。</li>
+</ul>
+</li>
+<li>文本文件与二进制文件<ul>
+<li>文本文件只由ASCII字符构成</li>
+<li>所有其他文件都是二进制文件</li>
+</ul>
+</li>
+<li><strong>总结</strong><ul>
+<li>这一小节主要讲述了信息在计算机中的存储形式，最小的是0，1表示的二进制，每对0，1表示一比特位，8个比特位表示一个字节，源代码中的字符存储在一个或者多个字节上</li>
+</ul>
+</li>
+</ul>
+<h2 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h2><ul>
+<li>hello.c文件是面向程序员的高级语言编写的文件，程序员可以编写，阅读，修改；但是在计算机中运行时，hello.c就需要转换形式，从C编写的高级程序语言，变成低级的机器语言指令，然后将这些指令打包成一个<strong>可执行目标程序</strong>的格式，并以二进制磁盘文件的形式存储，这个过程是用过编译器驱动完成的</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; gcc -o hello hello.c </span><br><span class="line">// gcc或者cc是编译工具， -o 是重命名 hello是可执行程序 hello.c是源代码</span><br></pre></td></tr></table></figure>
+<ul>
+<li>整个编译过程分为以下几步<ul>
+<li>hello.c源文件 经过<strong>预处理</strong>器（#include &lt;stdio.h&gt;/cpp）</li>
+<li>预处理器修改了源程序，变成hello.i（文本）</li>
+<li>再经过<strong>编译</strong>器（ccl）,形成了hello.s（文本）</li>
+<li>hello.s是汇编程序，需要再经过<strong>汇编</strong>器（as）</li>
+<li>才能形成可重定位的目标程序hello.o（二进制）</li>
+<li>将hello.o和预编译好的函数合并<strong>链接</strong>成为hello</li>
+</ul>
+</li>
+<li><strong>总结</strong><ul>
+<li>这一小节主要阐释了源代码到可执行文件的转换过程，经过预处理，编译，汇编，链接最终形成了可以直接执行的文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="了解编译系统的工作的重要性"><a href="#了解编译系统的工作的重要性" class="headerlink" title="了解编译系统的工作的重要性"></a>了解编译系统的工作的重要性</h2><ul>
+<li>作为一个程序员，有必要知道编译系统是如何工作的，这样可以帮助我们更好的工作，以下是了解编译系统的好处<ul>
+<li>优化程序性能: 哪种方式更加高效</li>
+<li>理解链接时出现的错误</li>
+<li>避免安全漏洞</li>
+</ul>
+</li>
+</ul>
+<h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><ul>
+<li>源代码经过编译变成了计算机可以识别的机器指令，通过bash可以执行，那么了解编译后的代码是如何在计算机中运行的，最终为什么会在显示屏上输出信息。对于执行过程和编译过程的了解，可以使我们对于底层系统软硬件的运行机制理解更加深入。</li>
+<li>编译主要是操作系统层面的软件过程，是文件类型的一种转换，而执行，需要将编译后的文件加载到硬件层面，和方方面面的硬件交互。</li>
+</ul>
+<h3 id="系统的硬件组成"><a href="#系统的硬件组成" class="headerlink" title="系统的硬件组成"></a>系统的硬件组成</h3><ul>
+<li>在介绍硬件之前，先要明确一点，计算机硬件的传递介质的是0和1的比特流。往大了看，也可以成为字节流。那么传递的速率如何限定，每次传递多少字节，每秒传递多少次，输出端可以输出多少，输入端可以接受多少就成为限制计算机性能的因素。</li>
+<li>总线<ul>
+<li>总线是一组电子管道，负责连接各个硬件设备。总线上传递的数据是定长的字节块，也就是字。</li>
+<li>字中的字节数（字长）是一个基本的系统参数，目前主流的机器都是64位字长，也就是8个字节。</li>
+<li>也就是说，总线单单次位传递的字节数量是8字节（64位比特）。如果一个字节对应一个字符，那么总线单位单次传递8个字符。</li>
+</ul>
+</li>
+<li>主存<ul>
+<li>主存是区别与硬盘的临时存储设备，主要是一组动态随机存取存储器（DRAM)芯片组成</li>
+<li>逻辑上，主存是一个线性的字节数组，每个字节都有唯一的地址（数组索引）</li>
+</ul>
+</li>
+<li>处理器<ul>
+<li>解释（执行）存储在主存中的指令的引擎</li>
+<li>需要执行的指令来自远程序计数器（PC寄存器），大小是一个字，在任何时候都指向主存中的一条地址</li>
+<li>具体循环流程: 处理器从PC取指令，执行指令，更新PC指令，这个模型是通过<strong>指令集架构</strong>决定</li>
+<li>CPU中的设备主要有<ul>
+<li>通用寄存器</li>
+<li>专用寄存器</li>
+<li>ALU算术逻辑单元</li>
+</ul>
+</li>
+<li>寄存器是单个字长（依据机器特性），ALU计算新的数据和地址值</li>
+<li>CPU指令操作<ul>
+<li>加载<ul>
+<li>从主存复制一个字节或者一个字到寄存器，以覆盖寄存器原来的内容</li>
+</ul>
+</li>
+<li>存储<ul>
+<li>从寄存器复制一个字节或者字到主存的某个位置，以覆盖这个位置上原来的内容</li>
+</ul>
+</li>
+<li>操作<ul>
+<li>把两个寄存器的内容复制到ALU，ALU对这两个字做算术运算，并将结果存放到一个寄存器中，以覆盖该寄存器中原来的内容</li>
+</ul>
+</li>
+<li>跳转<ul>
+<li>从指令本身抽取一个字，并将这个字复制到程序计数器（PC）中，以覆盖PC中原来的值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>I/O 设备<ul>
+<li>I/O 设备是系统和外界的联系通道，常见的I/O设备有以下几种<ul>
+<li>用户输入的键盘，鼠标</li>
+<li>用户输出的显示器</li>
+<li>长期存储数据和程序的硬盘</li>
+</ul>
+</li>
+<li>在I/O 设备和I/O总线之间存在一个适配器（控制器），它决定设备的封装方式。<ul>
+<li>控制器是主板上的芯片组</li>
+<li>适配器是一块插在主板上的卡（显卡，网卡）</li>
+</ul>
+</li>
+<li>指令集架构与微体系结构的区别？<ul>
+<li>指令集架构描述的是每条机器代码指令的效果</li>
+<li>微体系结构描述的是处理器实际上如何实现的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>在了解了基本的硬件组成之后，我们开始看看hello.c的示例程序到底发生了什么？<ul>
+<li>前情提要，目前我们已经将hello.c文件通过预处理，将#include &lt;stdio.h&gt;类似的宏指令添加到其中，形成hello.i文件，然后通过编译，形成了汇编程序hello.s，然后经过汇编器，将汇编文件变成二进制的可执行文件hello.o，最后经过链接阶段，将hello.o和预处理函数结合，形成真正的可执行目标文件hello</li>
+<li>现在我们需要对hello进行bash执行，观察，说明其中的发展与变化<ul>
+<li>在shell界面，我们输入./hello的bash指令，shell程序将字符读入寄存器，再把它们放在内存中。</li>
+<li>敲击回车后，shell执行指令加载hello文件</li>
+<li>指令将hello目标文件的代码和数据从磁盘复制到内存中。</li>
+<li>处理器开始执行hello程序的main程序的机器指令</li>
+<li>将hello,world 字符串中的字节从内存中复制到寄存器文件</li>
+<li>再从寄存器文件复制到显示设备</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>总结</strong><ul>
+<li>本小节先从硬件设备入手，讲述了总线，I/O， 内存，CPU，然后讲述hello的在其中的执行过程</li>
+<li>重点以下几方面:<ul>
+<li>总线的传输速率，字（字长）是根据机器决定，现在普遍64位8字节</li>
+<li>CPU的pc的作用，alu的操作，其中alu操作可以这么记忆，cpu中除了alu只剩存储设备寄存器，那么首先输入（加载），移动（存储），输出（操作），下一条命令（跳转）</li>
+<li>hello的执行过程中需要注意的就是指令需要经过寄存器，本质上是指令和数据在不不同位置的转移，硬盘，内存，寄存器，总线</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="高速缓存与存储结构"><a href="#高速缓存与存储结构" class="headerlink" title="高速缓存与存储结构"></a>高速缓存与存储结构</h2><ul>
+<li>高速缓存存在的意义<ul>
+<li>内存和寄存器之间的传递损耗太大，用网络中的说法就是降低最后一公里的消耗</li>
+</ul>
+</li>
+<li>高速缓存分类<ul>
+<li>L1: 速度与寄存器相当，位于处理器芯片上</li>
+<li>L2: 通过一条总线连接到CPU核心</li>
+<li>L1,L2为核心单独缓存，L3为CPU共享缓存</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作系统的诞生"><a href="#操作系统的诞生" class="headerlink" title="操作系统的诞生"></a>操作系统的诞生</h2><ul>
+<li>为什么要有操作系统？<ul>
+<li>防止硬件被失控的应用程序滥用</li>
+<li>向应用程序提供简单一致的机制来控制复杂又通常大不相同的低级硬件设备</li>
+</ul>
+</li>
+<li>如何实现？<ul>
+<li>进程，虚拟内存，文件</li>
+<li>文件是对I/O设备的抽象</li>
+<li>虚拟内存是对内存和I/O设备的抽象</li>
+<li>进程是对处理器，内存和I/O设备的抽象</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
+<li>什么是进程？<ul>
+<li>进程是一种抽象表现，它的主体是程序，具体表现为数个程序共用一套硬件而不自知，每个程序都感觉自己在独占硬件平台。</li>
+<li>真实情况就是，不同进程的指令是交错执行，这样的行为可以称为<strong>并发运行</strong></li>
+<li>无论是单核还是多核系统，一个CPU看上去都像是在并发的执行多个进程，这时通过处理器在进程间切换来实现的，这种操作系统层面交错执行的机制称为<strong>上下文切换</strong>。</li>
+</ul>
+</li>
+<li>以单核处理器系统为例子说明<ul>
+<li>上下文是什么？<ul>
+<li>操作系统跟踪进程运行所需的状态信息，简而言之，就是一个进程可以称为一个进程的最基础信息</li>
+<li>这些信息的作用就是帮助操作系统还原进程，再现切换前的状态</li>
+</ul>
+</li>
+<li>以hello运行说明<ul>
+<li>两个进程shell，hello进程</li>
+<li>开始是shell进程运行，然后用户输入</li>
+<li>shell通过系统调用函数，执行bash命令</li>
+<li>系统调用将控制权传递给操作系统，保存上下文，运行hello程序</li>
+<li>恢复shell上下文，等待下一个输入</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>这里例子中的重点在于系统调用使得进程进行了切换，通过内核管理。<ul>
+<li>具体操作是系统调用是，将控制权从用户态传递给内核态，通过内核执行被请求的操作，然后返回用户态。</li>
+</ul>
+</li>
+</ul>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><ul>
+<li>我们为什么需要线程？<ul>
+<li>多进程的粒度太大，我们需要拆分单个进程，在进程上下文中搞事情，而不是在多进程，操作系统保存的多个进程上下文中。</li>
+</ul>
+</li>
+</ul>
+<h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><ul>
+<li>我们知道，进程是一种操作系统层面的抽象，将硬件隔离。虚拟内存使得进程之于硬件进一步隔离。</li>
+<li>通过虚拟地址空间，使得每个进程似乎都独占了内存。</li>
+<li>构成（从上往下）<ul>
+<li>内核虚拟内存（用户不可见）</li>
+<li>用户栈<ul>
+<li>运行时创建，编译器用它实现函数调用</li>
+<li>可以在程序执行期间动态地扩展和收缩（每调用一个函数就扩展，从一个函数返回就收缩）</li>
+</ul>
+</li>
+<li>共享库<ul>
+<li>存放标准库和数学库的共享代码和数据</li>
+</ul>
+</li>
+<li>运行时堆<ul>
+<li>代码和数据区在进程一开始运行时就被指定了大小</li>
+<li>可以动态扩展和收缩</li>
+</ul>
+</li>
+<li>程序代码和数据<ul>
+<li>对于所有进程来说，从同一固定地址开始，然后就是全局变量的位置</li>
+<li>以上这句话的意思是，进程要加载外部数据和代码的时候，需要从虚拟内存的固定位置开始，然后跳转到全局变量的位置，慢慢加载。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><ul>
+<li>文件是输入输出的抽象表达，本质上就是字节序列；</li>
+<li>实现方式也都是通过一组Unix I/O 的系统函数调用来读写的</li>
+</ul>
+<h2 id="操作系统总结"><a href="#操作系统总结" class="headerlink" title="操作系统总结"></a>操作系统总结</h2><ul>
+<li>软件层面不似硬件，所有都要以抽象概念理解，具体而言分为进程，虚拟内存，文件<ul>
+<li>文件是输入输出的抽象，用户看到的基本都是文件形式</li>
+<li>虚拟内存是内存和输入输出的抽象，通过虚拟内存地址空间，将数据和代码加载，存储，等待运行</li>
+<li>进程是处理器，内存和输入输出的抽象，通过进程，线程，让各个程序有序的在硬件层面运行</li>
+</ul>
+</li>
+</ul>
+<h2 id="重要概念阐述"><a href="#重要概念阐述" class="headerlink" title="重要概念阐述"></a>重要概念阐述</h2><h3 id="Amdahl定律"><a href="#Amdahl定律" class="headerlink" title="Amdahl定律"></a>Amdahl定律</h3><ul>
+<li>当我们对系统的某个部分加速时，其对系统整体性能取决于该部分的重要性和加速程度。</li>
+<li>也就是说如果想要显著加速整个系统，必须提升全系统中相当大的部分的速度</li>
+</ul>
+<h3 id="并行与并发"><a href="#并行与并发" class="headerlink" title="并行与并发"></a>并行与并发</h3><ul>
+<li>并发指的是一个同时具有多个活动的系统</li>
+<li>并行指的是用并发来使一个系统运行的更快</li>
+<li>由定义可知，并发主要修饰的系统，修饰语是同时和多个活动，而并行主要强调系统的运行速度。</li>
+<li>线程级并行<ul>
+<li>线程级并发主要在多核多线程架构上体现，硬件层面上，处理器包含一个统一共享的L3缓存，每个核心具有自己独立的L2，L1数据，L1指令缓存和寄存器。处理器包含多个核心。</li>
+<li>单核处理的功能主要是允许多用户同时与系统交互。</li>
+<li>超线程本质上是一个CPU指定多个控制流的过程，多核就代表多个CPU和更多的控制流。</li>
+</ul>
+</li>
+<li>指令级并行<ul>
+<li>处理器同时执行多个指令的属性，主要用到流水线模型</li>
+</ul>
+</li>
+<li>单指令，多数据并行<ul>
+<li>允许一条指令产生多个可以并行执行的操作，SIMD并行</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+	<div>
+	
+	</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2021/07/01/博尔赫斯/女海盗/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1861,7 +2306,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2021/05/25/闲言碎语/" class="post-title-link" itemprop="url">闲言碎语.</a>
+                <a href="/2021/05/25/闲言碎语/" class="post-title-link" itemprop="url">闲言碎语</a>
               
             
           </h1>
@@ -1903,7 +2348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2021-07-09 07:45:32" itemprop="dateModified" datetime="2021-07-09T07:45:32+08:00">2021-07-09</time>
+                <time title="修改时间：2021-07-11 20:28:27" itemprop="dateModified" datetime="2021-07-11T20:28:27+08:00">2021-07-11</time>
               
             
           </span>
@@ -1931,7 +2376,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.9k</span>
+                <span title="本文字数">7.5k</span>
               
 
               
@@ -1945,7 +2390,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">6 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -2022,6 +2467,12 @@
 <li>锻炼有一个很有趣的地方，每当你感到不适的时候，站在第三方视角看看你的动作要点，肢体行为，总能发现点与标准化动作相背离的奇怪姿势。身体出于保护机制，想要完成某种之前没完成的动作，总会根据自身的情况做出一些改变。可能是重心，可能是受力，可能是其他的一些。</li>
 <li>如何形容自己的这一年左右的行为，原来的我是一个巨大圆中无数空心小圆的补集，我试图去压缩整个巨大的圆，浓缩成一个小黑点，然后从小黑点出发，绕着边界一点一点的画圆。</li>
 <li>当无数信息流在5分钟内穿越你的脑海，你最想了解的是哪些内容，这和很久之前的一个问题相似，一个人穿越一片果园，只能向前，不能向后，可以采摘一个苹果，那么他会做出什么样的选择？</li>
+<li>电脑对于我们来说是一扇窗户，一个看向世界的窗口，从这个角度来说，操作系统是一扇窗户，在操作系统上，我们连接本地与远端；应用是一扇窗户，如果它足够大，信息足够丰富，那么某种意义上就取代了操作系统，应用网站也就取代了浏览器。</li>
+<li>欲速不达的道理我们都懂，但是当我们面临deadline的时候，会一贯性的敷衍自己，就好像吃饭，感觉饱了就行，而不是每天补充够了所需的营养成分，日积月累，对于身体造成的伤害充满未知。</li>
+<li>系统学习和浅尝辄止的区别在于，系统学习往往是没有具体的问题，需要自己联想发现问题，学习的过程中容易跑火车，浅尝辄止的学习往往带着某个具体的问题去找答案，执着与表面的现象，不缺深究其原因。</li>
+<li>真正的封闭是人内心的封闭，表现出的形式就是相互的不理解，也拒绝理解，用标签化的言语定义全部的一切。观点相左就骂倒，行为相左就隔离。求同存异的前提是倾听与交流，冲突与对立带来的只有逃离。</li>
+<li>很多时候，所谓的学习方法，学习技巧都是简单的，坚持大量的输入，坚持大量的输出，仅此而已。</li>
+<li>所谓的美好生活，最核心的基础就是人选择的权利，可以选择躺平，可以选择求知，可以选择探索，可以选择如何死亡，可以选择如何生存。</li>
 </ul>
 
           
@@ -2342,200 +2793,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://http://msca42.site/2021/04/17/生活/你想要过什么样的生活/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="msca">
-      <meta itemprop="description" content="丝竹响彻无忧宫，独倚斜阳一醉翁">
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="msca.blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/04/17/生活/你想要过什么样的生活/" class="post-title-link" itemprop="url">你想要过什么样的生活</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-04-17 03:40:10 / 修改时间：08:53:56" itemprop="dateCreated datePublished" datetime="2021-04-17T03:40:10+08:00">2021-04-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/梦呓/" itemprop="url" rel="index"><span itemprop="name">梦呓</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">212</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    不知何时起，我常常问自己:”你想过什么样的生活？”<br>​    胡适在《人生又何意义》一书中讲了这样一个故事，他的一位少时同侪有一天<br>如此问他，我这样的日子又什么意义，少时求学，毕业后在老师的帮助下在大城市的学堂教书，外快私塾，娶妻生子，然而老师离开之后，人事变迁，工作丢了，只得靠卖字养活家庭，腹中点墨稍时干净，只留得一家四口空空如也的腹胸与生存的本能。如是我闻，确实不知道该如何回答。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-	<div>
-	
-	</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2577,7 +2841,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2623,7 +2887,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -2727,7 +2993,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">13k</span>
+    <span title="站点总字数">18k</span>
   
 
   
@@ -2736,7 +3002,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">12 分钟</span>
+    <span title="站点阅读时长">16 分钟</span>
   
 </div>
 
